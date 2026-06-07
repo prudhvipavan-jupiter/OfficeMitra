@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+node_modules.bak/
+
+# Build
+.next/
+out/
+dist/
+build/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.cursor/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# Database / local data
+data/
+*.db
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Temp uploads
+.tmp.driveupload/

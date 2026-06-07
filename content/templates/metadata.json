@@ -1,0 +1,122 @@
+[
+  {
+    "id": "probation-proceedings-template",
+    "title": "Probation Declaration Proceedings",
+    "category": "establishment",
+    "description": "Standard proceedings for probation declaration.",
+    "usage_notes": "Fill employee name, designation, appointment order ref, probation period.",
+    "related_articles": [
+      "probation-declaration"
+    ],
+    "related_procedures": [
+      "probation-declaration-procedure"
+    ],
+    "file_docx": "/downloads/templates/probation-proceedings-template.txt",
+    "file_pdf": "/downloads/templates/probation-proceedings-template.txt"
+  },
+  {
+    "id": "promotion-proceedings-template",
+    "title": "Promotion Proceedings",
+    "category": "establishment",
+    "description": "Proceedings format for zone/category promotion.",
+    "usage_notes": "Include vacancy ref, seniority, and promoted employee details.",
+    "related_articles": [
+      "promotion-zone-category"
+    ],
+    "related_procedures": [
+      "promotion-procedure"
+    ],
+    "file_docx": "/downloads/templates/promotion-proceedings-template.txt",
+    "file_pdf": "/downloads/templates/promotion-proceedings-template.txt"
+  },
+  {
+    "id": "sr-entry-template",
+    "title": "Service Register Entry — Probation",
+    "category": "establishment",
+    "description": "SR entry for probation completion.",
+    "usage_notes": "Reference proceeding number and date.",
+    "related_articles": [
+      "probation-declaration"
+    ],
+    "related_procedures": [
+      "probation-declaration-procedure"
+    ],
+    "file_docx": "/downloads/templates/sr-entry-template.txt",
+    "file_pdf": "/downloads/templates/sr-entry-template.txt"
+  },
+  {
+    "id": "sr-correction-note",
+    "title": "SR Correction Note",
+    "category": "establishment",
+    "description": "Note for authenticated SR correction.",
+    "usage_notes": "Cite incorrect entry and correction order.",
+    "related_articles": [
+      "service-register-maintenance"
+    ],
+    "related_procedures": [
+      "service-register-maintenance-procedure"
+    ],
+    "file_docx": "/downloads/templates/sr-correction-note.txt",
+    "file_pdf": "/downloads/templates/sr-correction-note.txt"
+  },
+  {
+    "id": "apgli-loan-application-template",
+    "title": "APGLI Loan Application Covering Letter",
+    "category": "finance",
+    "description": "Forwarding letter for APGLI loan.",
+    "usage_notes": "Attach application and premium statement.",
+    "related_articles": [
+      "apgli-loan-application"
+    ],
+    "related_procedures": [
+      "apgli-loan-procedure"
+    ],
+    "file_docx": "/downloads/templates/apgli-loan-application-template.txt",
+    "file_pdf": "/downloads/templates/apgli-loan-application-template.txt"
+  },
+  {
+    "id": "gpf-advance-application-template",
+    "title": "GPF Advance Application",
+    "category": "finance",
+    "description": "GPF advance application format.",
+    "usage_notes": "State purpose and amount clearly.",
+    "related_articles": [
+      "gpf-advance"
+    ],
+    "related_procedures": [
+      "gpf-advance-procedure"
+    ],
+    "file_docx": "/downloads/templates/gpf-advance-application-template.txt",
+    "file_pdf": "/downloads/templates/gpf-advance-application-template.txt"
+  },
+  {
+    "id": "medical-reimbursement-bill-template",
+    "title": "Medical Reimbursement Bill",
+    "category": "finance",
+    "description": "Bill format for medical claims.",
+    "usage_notes": "Attach prescriptions and original bills.",
+    "related_articles": [
+      "medical-reimbursement"
+    ],
+    "related_procedures": [
+      "medical-reimbursement-procedure"
+    ],
+    "file_docx": "/downloads/templates/medical-reimbursement-bill-template.txt",
+    "file_pdf": "/downloads/templates/medical-reimbursement-bill-template.txt"
+  },
+  {
+    "id": "el-encashment-application-template",
+    "title": "EL Encashment Application",
+    "category": "leave",
+    "description": "Application for EL encashment on retirement.",
+    "usage_notes": "Include leave account extract and calculation.",
+    "related_articles": [
+      "el-encashment-retirement"
+    ],
+    "related_procedures": [
+      "el-encashment-procedure"
+    ],
+    "file_docx": "/downloads/templates/el-encashment-application-template.txt",
+    "file_pdf": "/downloads/templates/el-encashment-application-template.txt"
+  }
+]
