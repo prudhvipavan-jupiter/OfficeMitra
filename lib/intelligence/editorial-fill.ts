@@ -141,7 +141,8 @@ export async function fillEditorialBriefings(needed: number): Promise<number> {
 
     if (!id) continue;
 
-    await saveIntelDraft(id, {
+    try {
+      await saveIntelDraft(id, {
       title: topic.title,
       summary: topic.summary,
       what_changed: topic.what_changed,
@@ -168,10 +169,13 @@ export async function fillEditorialBriefings(needed: number): Promise<number> {
       ].join("\n"),
     });
 
-    await logIntelActivity("editorial_briefing", `Editorial briefing queued: ${topic.title}`, {
-      update_id: id,
-    });
-    created += 1;
+      await logIntelActivity("editorial_briefing", `Editorial briefing queued: ${topic.title}`, {
+        update_id: id,
+      });
+      created += 1;
+    } catch {
+      // skip failed item
+    }
   }
 
   return created;

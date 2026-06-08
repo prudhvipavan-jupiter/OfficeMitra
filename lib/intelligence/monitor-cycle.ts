@@ -4,7 +4,6 @@ import { fillEditorialBriefings } from "./editorial-fill";
 import { makeFingerprint } from "./fingerprint";
 import {
   countIntelPublishedToday,
-  countIntelReadyDrafts,
   ensureIntelInfrastructure,
   finishIntelMonitoringRun,
   fingerprintExists,
@@ -119,10 +118,9 @@ export async function runIntelligenceMonitorCycle(): Promise<{
   try {
     const target = dailyPublishTarget();
     const publishedToday = await countIntelPublishedToday();
-    const readyDrafts = await countIntelReadyDrafts();
-    const needDrafts = Math.max(0, target - publishedToday - readyDrafts);
+    const needPublished = Math.max(0, target - publishedToday);
 
-    editorialCreated = await fillEditorialBriefings(needDrafts);
+    editorialCreated = await fillEditorialBriefings(Math.min(needPublished, target));
 
     const sources = await getActiveIntelSources();
     const perRun = Math.min(sources.length, 5);
