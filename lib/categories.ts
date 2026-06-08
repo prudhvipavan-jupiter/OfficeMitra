@@ -5,7 +5,9 @@ export type ArticleCategory =
   | "apgli"
   | "gpf"
   | "treasury"
-  | "service-rules";
+  | "service-rules"
+  | "conduct"
+  | "health";
 
 export const categoryLabels: Record<ArticleCategory, string> = {
   establishment: "Establishment",
@@ -15,6 +17,8 @@ export const categoryLabels: Record<ArticleCategory, string> = {
   gpf: "GPF",
   treasury: "Treasury",
   "service-rules": "Service Rules",
+  conduct: "Conduct & Disciplinary",
+  health: "Health Department",
 };
 
 export interface ProcedureData {

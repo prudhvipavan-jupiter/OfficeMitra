@@ -8,6 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "seed": "node scripts/seed-launch.mjs",
+    "content:scrape": "python scripts/content-pipeline/scrape_sources.py",
+    "content:generate": "node scripts/generate-hero-articles.mjs",
+    "content:import": "node scripts/import-drafts.mjs",
+    "content:pipeline": "node scripts/generate-hero-articles.mjs && node scripts/import-drafts.mjs",
     "db:setup": "node scripts/setup-db.mjs",
     "docs:pdfs": "node scripts/generate-document-pdfs.mjs",
     "cms:sync": "node scripts/cms-auto-sync.mjs"

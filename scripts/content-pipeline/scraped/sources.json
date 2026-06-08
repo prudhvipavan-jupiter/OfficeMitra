@@ -1,0 +1,39 @@
+{
+  "https://cfms.ap.gov.in/": {
+    "url": "https://cfms.ap.gov.in/",
+    "ok": true,
+    "title": ":: CFMS ::",
+    "snippet": ":: CFMS :: తెలుగు ENGLISH Menu Login HR Mapping Employee Services Help Desk Training Message board ATTENTION-Works Module Phase-II: Manual Verification of correctness of Est. & Agt. rates, M-Book values, Memo of Payment & Recoveries is mandatory before approving the documents & submitting bills by the Maker, Checker, Approver/DDO, and PAOs Facility for payment of deferred Salaries is enabled. For User manual, click here. APCOS - Timely Submission of attendance details to process salaries of 'Outsourced Personnel' in CFMS portal - Important instructions issued - Reg. Dated:21.09.2020 à°¨à°à°¦à…",
+    "error": "",
+    "status_code": 200
+  },
+  "https://goir.ap.gov.in/": {
+    "url": "https://goir.ap.gov.in/",
+    "ok": true,
+    "title": "ANDHRA PRADESH GOVERNMENT ORDERS ISSUE REGISTER",
+    "snippet": "ANDHRA PRADESH GOVERNMENT ORDERS ISSUE REGISTER x Search Government Orders - from June, 2008 DEPARTMENT : ---ALL--- AGC01 -AGRICULTURE AND COOPERATION AGC01-R-RAIN SHADOW AREAS DEVELOPMENT AHF01 -ANIMAL HUSBANDRY AND FISHERIES BCW01 -BACKWARD CLASSES WELFARE EFS01 -ENVIRONMENT FOREST SCIENCE AND TECHNOLOGY EHE01 -HIGHER EDUCATION ENE01 -ENERGY, INFRASTRUCTURE AND INVESTMENT ENE01-E-ENERGY ESE01 -SCHOOL EDUCATION EWS01-ECONOMICALLY WEAKER SECTIONS WELFARE FCS01 -CONSUMER AFFAIRS, FOOD AND CIVIL SUPPLIES FIN01 -FINANCE FIN01-P-FINANCE PMU FIN01-W-FINANCE WORKS AND PROJECTS GAD01 -GENERAL ADMINIS…",
+    "error": "",
+    "status_code": 200
+  },
+  "https://health.ap.gov.in/": {
+    "url": "https://health.ap.gov.in/",
+    "ok": false,
+    "title": "",
+    "snippet": "",
+    "error": "HTTPSConnectionPool(host='health.ap.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='health.ap.gov.in', port=443) at 0x17a9591a0d0>, 'Connection to health.ap.gov.in timed out. (connect timeout=20)'))"
+  },
+  "https://www.apfinance.ap.gov.in/": {
+    "url": "https://www.apfinance.ap.gov.in/",
+    "ok": false,
+    "title": "",
+    "snippet": "",
+    "error": "HTTPSConnectionPool(host='www.apfinance.ap.gov.in', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='www.apfinance.ap.gov.in', port=443): Failed to resolve 'www.apfinance.ap.gov.in' ([Errno 11001] getaddrinfo failed)\"))"
+  },
+  "https://www.apgli.ap.gov.in/": {
+    "url": "https://www.apgli.ap.gov.in/",
+    "ok": false,
+    "title": "",
+    "snippet": "",
+    "error": "HTTPSConnectionPool(host='www.apgli.ap.gov.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))"
+  }
+}

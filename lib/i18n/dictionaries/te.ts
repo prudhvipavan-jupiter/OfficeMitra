@@ -76,6 +76,8 @@ export const te: Dictionary = {
     gpf: "GPF",
     treasury: "ట్రెజరీ",
     "service-rules": "సర్వీస్ రూల్స్",
+    conduct: "Conduct & Disciplinary",
+    health: "Health Department",
   },
   docTypes: {
     go: "ప్రభుత్వ ఉత్తర్వు",

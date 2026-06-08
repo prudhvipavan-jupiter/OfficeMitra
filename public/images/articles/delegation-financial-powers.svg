@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" role="img" aria-label="Delegation of Financial Powers Explained">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1b5e20"/>
+      <stop offset="100%" style="stop-color:#0a1628"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="420" fill="url(#bg)"/>
+  <rect x="0" y="360" width="800" height="4" fill="#ffd54f"/>
+  <circle cx="700" cy="80" r="120" fill="#ffd54f" opacity="0.12"/>
+  <circle cx="100" cy="340" r="80" fill="#ffd54f" opacity="0.08"/>
+  <text x="48" y="72" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#ffd54f" letter-spacing="2">FINANCE</text>
+  <text x="48" y="140" font-family="Segoe UI, Arial, sans-serif" font-size="32" font-weight="700" fill="#ffffff">Delegation of Financial Powers Explained</text>
+  <text x="48" y="190" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#cbd5e1" opacity="0.9">OfficeMitra · AP Health Department Guide</text>
+  <text x="48" y="320" font-family="Segoe UI, Arial, sans-serif" font-size="48">📊</text>
+  
+</svg>

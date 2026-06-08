@@ -24,6 +24,7 @@ export function ContentManager({ type }: ContentManagerProps) {
   const [items, setItems] = useState<CmsRecord[]>([]);
   const [storage, setStorage] = useState<string>("");
   const [loading, setLoading] = useState(true);
+  const [statusFilter, setStatusFilter] = useState<"all" | CmsStatus>("all");
   const [editing, setEditing] = useState<CmsRecord | "new" | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
@@ -59,10 +60,30 @@ export function ContentManager({ type }: ContentManagerProps) {
     await load();
   }
 
+  async function publishAllDrafts() {
+    const drafts = items.filter((i) => i.status === "draft");
+    if (drafts.length === 0) return;
+    if (!confirm(`Publish all ${drafts.length} draft items? They will appear on the public site.`)) return;
+    setSaving(true);
+    for (const item of drafts) {
+      await fetch(`/api/admin/cms/${item.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: "published", data: item.data, body: item.body }),
+      });
+    }
+    setSaving(false);
+    await load();
+  }
+
   async function seedImport(force = false) {
     if (force && !confirm("Reset this section and re-import everything from files?")) return;
     await runSync(force ? "seed" : "sync", force);
   }
+
+  const filtered =
+    statusFilter === "all" ? items : items.filter((i) => i.status === statusFilter);
+  const draftCount = items.filter((i) => i.status === "draft").length;
 
   async function remove(id: string) {
     if (!confirm("Delete this item permanently?")) return;
@@ -119,7 +140,36 @@ export function ContentManager({ type }: ContentManagerProps) {
             <Plus className="h-4 w-4" />
             Add new
           </button>
+          {draftCount > 0 && (
+            <button
+              type="button"
+              onClick={publishAllDrafts}
+              disabled={saving}
+              className="rounded-lg bg-gold-600 px-3 py-2 text-sm font-semibold text-white disabled:opacity-50"
+            >
+              Publish all drafts ({draftCount})
+            </button>
+          )}
         </div>
+      </div>
+
+      <div className="mt-4 flex flex-wrap items-center gap-3">
+        <label className="text-xs font-semibold uppercase text-gray-500">Filter</label>
+        <select
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value as "all" | CmsStatus)}
+          className="rounded-lg border border-navy-200 px-3 py-1.5 text-sm"
+        >
+          <option value="all">All ({items.length})</option>
+          <option value="draft">Draft ({draftCount})</option>
+          <option value="published">Published ({items.filter((i) => i.status === "published").length})</option>
+          <option value="archived">Archived ({items.filter((i) => i.status === "archived").length})</option>
+        </select>
+        {type === "article" && draftCount > 0 && (
+          <span className="text-xs text-amber-800 dark:text-amber-200">
+            {draftCount} articles awaiting your review — edit and set status to Published when approved.
+          </span>
+        )}
       </div>
 
       {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
@@ -128,17 +178,32 @@ export function ContentManager({ type }: ContentManagerProps) {
         <p className="mt-6 text-gray-500">Loading…</p>
       ) : (
         <ul className="mt-6 divide-y divide-navy-100 rounded-xl border border-navy-100 bg-white dark:divide-navy-700 dark:border-navy-700 dark:bg-navy-800/80">
-          {items.length === 0 && (
+          {filtered.length === 0 && (
             <li className="p-6 text-center text-sm text-gray-500">
-              No items yet. Content auto-syncs from files on startup — click &quot;Sync from files&quot; or &quot;Add new&quot;.
+              {items.length === 0
+                ? 'No items yet. Run "Sync from files" or "Add new".'
+                : "No items match this filter."}
             </li>
           )}
-          {items.map((item) => (
+          {filtered.map((item) => (
             <li key={item.id} className="flex flex-wrap items-center justify-between gap-3 p-4">
               <div>
-                <p className="font-medium text-navy-900 dark:text-white">{itemTitle(item)}</p>
+                <p className="font-medium text-navy-900 dark:text-white">
+                  {itemTitle(item)}
+                  {item.data.priority === 1 && (
+                    <span className="ml-2 rounded-full bg-gold-100 px-2 py-0.5 text-[10px] font-bold uppercase text-gold-800">
+                      Week 1
+                    </span>
+                  )}
+                  {item.status === "draft" && (
+                    <span className="ml-2 rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold uppercase text-amber-900">
+                      Review
+                    </span>
+                  )}
+                </p>
                 <p className="text-xs text-gray-500">
-                  {item.status} · {item.slug ?? "no slug"} · updated {new Date(item.updated_at).toLocaleDateString()}
+                  {item.status} · {String(item.data.category ?? "—")} · {item.slug ?? "no slug"} · updated{" "}
+                  {new Date(item.updated_at).toLocaleDateString()}
                 </p>
               </div>
               <div className="flex gap-2">
@@ -190,7 +255,7 @@ function EditPanel({
   onSaved: () => void;
 }) {
   const isNew = !item;
-  const [status, setStatus] = useState<CmsStatus>(item?.status ?? "published");
+  const [status, setStatus] = useState<CmsStatus>(item?.status ?? "draft");
   const [slug, setSlug] = useState(item?.slug ?? "");
   const [dataJson, setDataJson] = useState(JSON.stringify(item?.data ?? defaultData(type), null, 2));
   const [body, setBody] = useState(item?.body ?? defaultBody(type));

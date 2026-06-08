@@ -74,6 +74,8 @@ export const en = {
     gpf: "GPF",
     treasury: "Treasury",
     "service-rules": "Service Rules",
+    conduct: "Conduct & Disciplinary",
+    health: "Health Department",
   },
   docTypes: {
     go: "Government Order",

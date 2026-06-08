@@ -1,0 +1,456 @@
+{
+  "generated_at": "2026-06-08T17:38:33.939Z",
+  "count": 50,
+  "articles": [
+    {
+      "slug": "probation-declaration",
+      "title": "Probation Declaration Procedure",
+      "category": "establishment",
+      "priority": 1,
+      "status": "draft",
+      "path": "content/articles/establishment/probation-declaration.md",
+      "image": "/images/articles/probation-declaration.svg"
+    },
+    {
+      "slug": "relinquishment-promotion-rule-28",
+      "title": "Relinquishment of Promotion under Rule 28",
+      "category": "establishment",
+      "priority": 1,
+      "status": "draft",
+      "path": "content/articles/establishment/relinquishment-promotion-rule-28.md",
+      "image": "/images/articles/relinquishment-promotion-rule-28.svg"
+    },
+    {
+      "slug": "promotion-process-step-by-step",
+      "title": "Promotion Process – Step by Step",
+      "category": "establishment",
+      "priority": 1,
+      "status": "draft",
+      "path": "content/articles/establishment/promotion-process-step-by-step.md",
+      "image": "/images/articles/promotion-process-step-by-step.svg"
+    },
+    {
+      "slug": "seniority-list-preparation",
+      "title": "Preparation of Seniority Lists",
+      "category": "establishment",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/establishment/seniority-list-preparation.md",
+      "image": "/images/articles/seniority-list-preparation.svg"
+    },
+    {
+      "slug": "transfer-procedure",
+      "title": "Transfer Procedure for Government Employees",
+      "category": "establishment",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/establishment/transfer-procedure.md",
+      "image": "/images/articles/transfer-procedure.svg"
+    },
+    {
+      "slug": "joining-time-rules",
+      "title": "Joining Time Rules Explained",
+      "category": "establishment",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/establishment/joining-time-rules.md",
+      "image": "/images/articles/joining-time-rules.svg"
+    },
+    {
+      "slug": "service-verification",
+      "title": "Service Verification Procedure",
+      "category": "establishment",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/establishment/service-verification.md",
+      "image": "/images/articles/service-verification.svg"
+    },
+    {
+      "slug": "approved-probation-declaration",
+      "title": "Declaration of Approved Probation",
+      "category": "establishment",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/establishment/approved-probation-declaration.md",
+      "image": "/images/articles/approved-probation-declaration.svg"
+    },
+    {
+      "slug": "compassionate-appointment",
+      "title": "Compassionate Appointment Guidelines",
+      "category": "establishment",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/establishment/compassionate-appointment.md",
+      "image": "/images/articles/compassionate-appointment.svg"
+    },
+    {
+      "slug": "increment-sanction",
+      "title": "Increment Sanction Procedure",
+      "category": "establishment",
+      "priority": 1,
+      "status": "draft",
+      "path": "content/articles/establishment/increment-sanction.md",
+      "image": "/images/articles/increment-sanction.svg"
+    },
+    {
+      "slug": "pay-fixation-fr-22b",
+      "title": "Pay Fixation under FR 22-B",
+      "category": "establishment",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/establishment/pay-fixation-fr-22b.md",
+      "image": "/images/articles/pay-fixation-fr-22b.svg"
+    },
+    {
+      "slug": "promotion-panel-preparation",
+      "title": "Preparation of Promotion Panels",
+      "category": "establishment",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/establishment/promotion-panel-preparation.md",
+      "image": "/images/articles/promotion-panel-preparation.svg"
+    },
+    {
+      "slug": "reservation-rules-promotions",
+      "title": "Reservation Rules in Promotions",
+      "category": "establishment",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/establishment/reservation-rules-promotions.md",
+      "image": "/images/articles/reservation-rules-promotions.svg"
+    },
+    {
+      "slug": "service-register-maintenance",
+      "title": "Service Register Maintenance Guide",
+      "category": "establishment",
+      "priority": 1,
+      "status": "draft",
+      "path": "content/articles/establishment/service-register-maintenance.md",
+      "image": "/images/articles/service-register-maintenance.svg"
+    },
+    {
+      "slug": "retirement-processing",
+      "title": "Retirement Processing Checklist",
+      "category": "establishment",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/establishment/retirement-processing.md",
+      "image": "/images/articles/retirement-processing.svg"
+    },
+    {
+      "slug": "earned-leave-rules",
+      "title": "Earned Leave Rules Explained",
+      "category": "leave",
+      "priority": 1,
+      "status": "draft",
+      "path": "content/articles/leave/earned-leave-rules.md",
+      "image": "/images/articles/earned-leave-rules.svg"
+    },
+    {
+      "slug": "half-pay-leave-procedure",
+      "title": "Half Pay Leave Procedure",
+      "category": "leave",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/leave/half-pay-leave-procedure.md",
+      "image": "/images/articles/half-pay-leave-procedure.svg"
+    },
+    {
+      "slug": "commuted-leave-rules",
+      "title": "Commuted Leave Procedure",
+      "category": "leave",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/leave/commuted-leave-rules.md",
+      "image": "/images/articles/commuted-leave-rules.svg"
+    },
+    {
+      "slug": "maternity-leave-rules",
+      "title": "Maternity Leave Rules (Latest Amendments)",
+      "category": "leave",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/leave/maternity-leave-rules.md",
+      "image": "/images/articles/maternity-leave-rules.svg"
+    },
+    {
+      "slug": "child-care-leave",
+      "title": "Child Care Leave Guidelines",
+      "category": "leave",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/leave/child-care-leave.md",
+      "image": "/images/articles/child-care-leave.svg"
+    },
+    {
+      "slug": "extraordinary-leave",
+      "title": "Extraordinary Leave Procedure",
+      "category": "leave",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/leave/extraordinary-leave.md",
+      "image": "/images/articles/extraordinary-leave.svg"
+    },
+    {
+      "slug": "leave-encashment-rules",
+      "title": "Leave Encashment Rules",
+      "category": "leave",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/leave/leave-encashment-rules.md",
+      "image": "/images/articles/leave-encashment-rules.svg"
+    },
+    {
+      "slug": "leave-account-maintenance",
+      "title": "Leave Account Maintenance",
+      "category": "leave",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/leave/leave-account-maintenance.md",
+      "image": "/images/articles/leave-account-maintenance.svg"
+    },
+    {
+      "slug": "apgli-policy-registration",
+      "title": "APGLI Policy Registration Process",
+      "category": "apgli",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/apgli/apgli-policy-registration.md",
+      "image": "/images/articles/apgli-policy-registration.svg"
+    },
+    {
+      "slug": "apgli-premium-revision",
+      "title": "APGLI Premium Revision Procedure",
+      "category": "apgli",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/apgli/apgli-premium-revision.md",
+      "image": "/images/articles/apgli-premium-revision.svg"
+    },
+    {
+      "slug": "apgli-loan-application",
+      "title": "APGLI Loan Application Guide",
+      "category": "apgli",
+      "priority": 1,
+      "status": "draft",
+      "path": "content/articles/apgli/apgli-loan-application.md",
+      "image": "/images/articles/apgli-loan-application.svg"
+    },
+    {
+      "slug": "apgli-maturity-claim",
+      "title": "APGLI Maturity Claim Process",
+      "category": "apgli",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/apgli/apgli-maturity-claim.md",
+      "image": "/images/articles/apgli-maturity-claim.svg"
+    },
+    {
+      "slug": "apgli-common-mistakes",
+      "title": "Common APGLI Mistakes and Solutions",
+      "category": "apgli",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/apgli/apgli-common-mistakes.md",
+      "image": "/images/articles/apgli-common-mistakes.svg"
+    },
+    {
+      "slug": "gpf-advance",
+      "title": "GPF Advance Procedure",
+      "category": "gpf",
+      "priority": 1,
+      "status": "draft",
+      "path": "content/articles/gpf/gpf-advance.md",
+      "image": "/images/articles/gpf-advance.svg"
+    },
+    {
+      "slug": "gpf-withdrawal-rules",
+      "title": "GPF Withdrawal Rules",
+      "category": "gpf",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/gpf/gpf-withdrawal-rules.md",
+      "image": "/images/articles/gpf-withdrawal-rules.svg"
+    },
+    {
+      "slug": "gpf-final-settlement",
+      "title": "Final GPF Settlement Process",
+      "category": "gpf",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/gpf/gpf-final-settlement.md",
+      "image": "/images/articles/gpf-final-settlement.svg"
+    },
+    {
+      "slug": "gpf-missing-credits",
+      "title": "Missing GPF Credits – What to Do",
+      "category": "gpf",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/gpf/gpf-missing-credits.md",
+      "image": "/images/articles/gpf-missing-credits.svg"
+    },
+    {
+      "slug": "gpf-nomination-corrections",
+      "title": "GPF Nomination and Corrections",
+      "category": "gpf",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/gpf/gpf-nomination-corrections.md",
+      "image": "/images/articles/gpf-nomination-corrections.svg"
+    },
+    {
+      "slug": "bcr-maintenance",
+      "title": "Budget Control Register (BCR) Maintenance",
+      "category": "finance",
+      "priority": 1,
+      "status": "draft",
+      "path": "content/articles/finance/bcr-maintenance.md",
+      "image": "/images/articles/bcr-maintenance.svg"
+    },
+    {
+      "slug": "contingent-bill-preparation",
+      "title": "Contingent Bill Preparation",
+      "category": "finance",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/finance/contingent-bill-preparation.md",
+      "image": "/images/articles/contingent-bill-preparation.svg"
+    },
+    {
+      "slug": "cfms-bill-processing",
+      "title": "CFMS Bill Processing Guide",
+      "category": "finance",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/finance/cfms-bill-processing.md",
+      "image": "/images/articles/cfms-bill-processing.svg"
+    },
+    {
+      "slug": "treasury-objections",
+      "title": "Treasury Objections and How to Avoid Them",
+      "category": "finance",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/finance/treasury-objections.md",
+      "image": "/images/articles/treasury-objections.svg"
+    },
+    {
+      "slug": "e-procurement-rules",
+      "title": "E-Procurement Rules Above ₹1 Lakh",
+      "category": "finance",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/finance/e-procurement-rules.md",
+      "image": "/images/articles/e-procurement-rules.svg"
+    },
+    {
+      "slug": "store-purchase-procedure",
+      "title": "Store Purchase Procedure under AP Financial Code",
+      "category": "finance",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/finance/store-purchase-procedure.md",
+      "image": "/images/articles/store-purchase-procedure.svg"
+    },
+    {
+      "slug": "delegation-financial-powers",
+      "title": "Delegation of Financial Powers Explained",
+      "category": "finance",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/finance/delegation-financial-powers.md",
+      "image": "/images/articles/delegation-financial-powers.svg"
+    },
+    {
+      "slug": "ap-civil-services-conduct-rules",
+      "title": "AP Civil Services Conduct Rules Explained",
+      "category": "conduct",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/conduct/ap-civil-services-conduct-rules.md",
+      "image": "/images/articles/ap-civil-services-conduct-rules.svg"
+    },
+    {
+      "slug": "charge-memo-preparation",
+      "title": "Charge Memo Preparation Guide",
+      "category": "conduct",
+      "priority": 1,
+      "status": "draft",
+      "path": "content/articles/conduct/charge-memo-preparation.md",
+      "image": "/images/articles/charge-memo-preparation.svg"
+    },
+    {
+      "slug": "suspension-procedure-cca",
+      "title": "Suspension Procedure under CCA Rules",
+      "category": "conduct",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/conduct/suspension-procedure-cca.md",
+      "image": "/images/articles/suspension-procedure-cca.svg"
+    },
+    {
+      "slug": "minor-major-penalty",
+      "title": "Minor Penalty vs Major Penalty Proceedings",
+      "category": "conduct",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/conduct/minor-major-penalty.md",
+      "image": "/images/articles/minor-major-penalty.svg"
+    },
+    {
+      "slug": "departmental-enquiry",
+      "title": "Departmental Enquiry Process",
+      "category": "conduct",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/conduct/departmental-enquiry.md",
+      "image": "/images/articles/departmental-enquiry.svg"
+    },
+    {
+      "slug": "outsourcing-staff-management",
+      "title": "Outsourcing Staff Management Guidelines",
+      "category": "health",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/health/outsourcing-staff-management.md",
+      "image": "/images/articles/outsourcing-staff-management.svg"
+    },
+    {
+      "slug": "hospital-condemnation",
+      "title": "Hospital Condemnation Procedure",
+      "category": "health",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/health/hospital-condemnation.md",
+      "image": "/images/articles/hospital-condemnation.svg"
+    },
+    {
+      "slug": "biomedical-waste-compliance",
+      "title": "Biomedical Waste Compliance Checklist",
+      "category": "health",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/health/biomedical-waste-compliance.md",
+      "image": "/images/articles/biomedical-waste-compliance.svg"
+    },
+    {
+      "slug": "apmsidc-procurement",
+      "title": "APMSIDC Procurement Workflow",
+      "category": "health",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/health/apmsidc-procurement.md",
+      "image": "/images/articles/apmsidc-procurement.svg"
+    },
+    {
+      "slug": "dha-responsibilities",
+      "title": "District Hospital Administrative Officer Responsibilities",
+      "category": "health",
+      "priority": 2,
+      "status": "draft",
+      "path": "content/articles/health/dha-responsibilities.md",
+      "image": "/images/articles/dha-responsibilities.svg"
+    }
+  ]
+}
