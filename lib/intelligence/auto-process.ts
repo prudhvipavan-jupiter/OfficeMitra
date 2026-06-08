@@ -4,6 +4,8 @@ import {
   publishIntelUpdate,
   updateIntelUpdate,
 } from "./store";
+
+function dailyPublishTarget(): number {
   return Math.max(1, parseInt(process.env.INTELLIGENCE_DAILY_PUBLISH_TARGET ?? "5", 10));
 }
 
