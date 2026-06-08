@@ -1,3 +1,4 @@
+import { upgradeBriefIntelPosts } from "./upgrade-content";
 import { checkIntelSource, fetchPage, getPageHashFromHtml } from "./fetcher";
 import { generateIntelDraft } from "./draft-generator";
 import { fillEditorialBriefings } from "./editorial-fill";
@@ -122,6 +123,8 @@ export async function runIntelligenceMonitorCycle(): Promise<{
 
     editorialCreated = await fillEditorialBriefings(Math.min(needPublished, target));
 
+    const upgraded = await upgradeBriefIntelPosts();
+
     const sources = await getActiveIntelSources();
     const perRun = Math.min(sources.length, 5);
     const offset =
@@ -163,7 +166,7 @@ export async function runIntelligenceMonitorCycle(): Promise<{
       items_found: itemsFound,
       drafts_generated: draftsGenerated + editorialCreated,
       error_message: errors.length ? errors.slice(0, 5).join("; ") : null,
-      details: { errors: errors.slice(0, 10), editorial_created: editorialCreated },
+      details: { errors: errors.slice(0, 10), editorial_created: editorialCreated, upgraded },
     });
 
     await logIntelActivity(

@@ -1,3 +1,4 @@
+import { formatDocumentsMarkdown, relatedKnowledgeSlug } from "./document-links";
 import type { IntelDetectedUpdate } from "./types";
 
 export interface IntelDraft {
@@ -12,7 +13,11 @@ export interface IntelDraft {
   body: string;
 }
 
-function fallbackDraft(item: {
+function section(title: string, body: string): string {
+  return `## ${title}\n\n${body.trim()}\n`;
+}
+
+function buildDetailedFallback(item: {
   title: string;
   source_name?: string;
   source_category?: string;
@@ -20,36 +25,58 @@ function fallbackDraft(item: {
 }): IntelDraft {
   const sourceName = item.source_name ?? "Official Source";
   const category = item.source_category ?? "Administration";
+  const slug = relatedKnowledgeSlug(item.title);
+
+  const body = [
+    section(
+      "Overview",
+      `OfficeMitra Intelligence detected a new publication on **${sourceName}** titled "${item.title}". This guide explains what ministerial staff should do next. We do not reproduce government text — read the official document at the source link and verify GO/circular numbers before acting.`
+    ),
+    section(
+      "What appears to have changed",
+      `A new item titled **"${item.title}"** was listed on ${sourceName}. Based on the title and source category (${category}), this likely relates to establishment, finance, or service matters affecting AP government employees.`
+    ),
+    section(
+      "Who should review this",
+      `- Establishment section staff\n- DDO / finance section\n- Head of Office\n- Ministerial staff in ${category} if broadly applicable`
+    ),
+    section(
+      "Recommended office action",
+      "1. Open the official source and download/read the full order\n2. Note GO/circular number and date\n3. Assess applicability to your institution\n4. Brief Head of Office if action required\n5. Prepare proceedings or office instructions\n6. Update Service Registers, leave accounts, or BCR\n7. File GO copy in subject file"
+    ),
+    section(
+      "Documents to collect",
+      "- Official order/circular (downloaded from portal)\n- Previous related GOs for comparison\n- Office note for Head of Office\n- Employee list if head-count action needed"
+    ),
+    formatDocumentsMarkdown(item.title, item.source_url),
+    slug ? `\n## Related OfficeMitra guide\n\n[Full step-by-step guide → /knowledge/${slug}](/knowledge/${slug})\n` : "",
+  ].join("\n");
+
   return {
-    title: `Update: ${item.title.slice(0, 120)}`,
-    summary: `A new item was detected on ${sourceName}. Review the official source before taking office action.`,
-    what_changed: `A new publication titled "${item.title}" appeared on ${sourceName}.`,
-    who_is_affected: `Potentially affected: AP ministerial staff under ${category}. Confirm scope on the official source.`,
-    action_required: [
-      `Open the official source: ${item.source_url}`,
-      "Read the full order or circular",
-      "Route to Head of Office if establishment or finance action is required",
-      "Update office records and Service Registers as applicable",
-    ].join("\n"),
-    reference_source: `Verify on official portal: ${item.source_url}`,
+    title: item.title.length > 100 ? item.title.slice(0, 97) + "…" : item.title,
+    summary: `New publication on ${sourceName}. Follow the detailed office action guide and verify on the official portal.`,
+    what_changed: `New publication "${item.title}" on ${sourceName}. Verify scope and effective date on the official portal.`,
+    who_is_affected: `AP ministerial staff under ${category}, especially Health Department establishment and finance sections.`,
+    action_required:
+      "1. Read official document\n2. Note GO number/date\n3. Brief Head of Office\n4. Prepare proceedings\n5. Update SR and office records",
+    reference_source: `Official source: ${item.source_url}`,
     department_impact: category,
-    keywords: ["AP government", "ministerial staff", category.toLowerCase(), "GO", "circular"],
-    body: [
-      "## Administrative notice",
-      "",
-      `OfficeMitra Intelligence detected a new item on **${sourceName}**.`,
-      "",
-      `**Detected title:** ${item.title}`,
-      "",
-      "This is an AI-assisted draft based on metadata only. No government text has been copied.",
-      `Open the [official source](${item.source_url}) to read the full document.`,
-    ].join("\n"),
+    keywords: ["AP government", category.toLowerCase(), "circular", "GO", "ministerial staff"],
+    body,
   };
 }
 
-export async function generateIntelDraft(
-  update: IntelDetectedUpdate
-): Promise<IntelDraft> {
+const DETAILED_SYSTEM_PROMPT = `You are OfficeMitra Intelligence for AP government ministerial staff.
+
+Write ORIGINAL detailed content from metadata only — never copy government text.
+
+JSON keys: title, summary, what_changed, who_is_affected, action_required, reference_source, department_impact, keywords (array), body (long markdown).
+
+Body must include: Overview, Applicable rules, Step-by-step procedure, Practical example (AP hospital), Checklist, Documents required, Official documents & links (with source URL), Common mistakes. Minimum 600 words in body.`;
+
+export { buildDetailedFallback };
+
+export async function generateIntelDraft(update: IntelDetectedUpdate): Promise<IntelDraft> {
   const item = {
     title: update.title,
     source_name: update.source?.name,
@@ -59,12 +86,7 @@ export async function generateIntelDraft(
   };
 
   const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) return fallbackDraft(item);
-
-  const system = `You are OfficeMitra Intelligence for AP government ministerial staff.
-You receive ONLY metadata (title, source, URL). Write ORIGINAL explanatory content in JSON.
-Never copy government text. Always tell users to verify on the official URL.
-Keys: title, summary, what_changed, who_is_affected, action_required, reference_source, department_impact, keywords (array), body (markdown).`;
+  if (!apiKey) return buildDetailedFallback(item);
 
   try {
     const res = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -76,25 +98,32 @@ Keys: title, summary, what_changed, who_is_affected, action_required, reference_
       body: JSON.stringify({
         model: process.env.OPENAI_MODEL ?? "gpt-4o-mini",
         temperature: 0.4,
+        max_tokens: 4000,
         response_format: { type: "json_object" },
         messages: [
-          { role: "system", content: system },
+          { role: "system", content: DETAILED_SYSTEM_PROMPT },
           {
             role: "user",
-            content: `Generate an OfficeMitra update draft:\n${JSON.stringify(item, null, 2)}`,
+            content: `Generate a DETAILED OfficeMitra update:\n${JSON.stringify(item, null, 2)}\n\nAppend to body a section "## Official documents & links" with the source URL.`,
           },
         ],
       }),
-      signal: AbortSignal.timeout(45_000),
+      signal: AbortSignal.timeout(60_000),
     });
 
-    if (!res.ok) return fallbackDraft(item);
+    if (!res.ok) return buildDetailedFallback(item);
     const json = (await res.json()) as {
       choices?: { message?: { content?: string } }[];
     };
     const content = json.choices?.[0]?.message?.content ?? "{}";
     const draft = JSON.parse(content) as Partial<IntelDraft>;
-    const base = fallbackDraft(item);
+    const base = buildDetailedFallback(item);
+
+    let body = draft.body ?? base.body;
+    if (!body.includes("Official documents")) {
+      body += "\n\n" + formatDocumentsMarkdown(item.title, item.source_url);
+    }
+
     return {
       title: draft.title ?? base.title,
       summary: draft.summary ?? base.summary,
@@ -104,9 +133,9 @@ Keys: title, summary, what_changed, who_is_affected, action_required, reference_
       reference_source: draft.reference_source ?? base.reference_source,
       department_impact: draft.department_impact ?? base.department_impact,
       keywords: Array.isArray(draft.keywords) ? draft.keywords : base.keywords,
-      body: draft.body ?? base.body,
+      body,
     };
   } catch {
-    return fallbackDraft(item);
+    return buildDetailedFallback(item);
   }
 }

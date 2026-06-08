@@ -63,6 +63,12 @@ export interface UpdateFrontmatter {
 
 export interface UpdateEntry extends UpdateFrontmatter {
   content: string;
+  /** Official portal URL where the update was detected */
+  source_url?: string;
+  /** Direct PDF/document link when source is a file */
+  document_url?: string;
+  /** Related OfficeMitra knowledge article slug */
+  related_knowledge_slug?: string;
 }
 
 function readMarkdownFiles<T>(

@@ -4,6 +4,7 @@ import { isAdminAuthenticated } from "@/lib/auth";
 import { autoProcessIntelUpdates } from "@/lib/intelligence/auto-process";
 import { runIntelligenceMonitorCycle } from "@/lib/intelligence/monitor-cycle";
 import { triggerIntelligenceWorker } from "@/lib/intelligence/trigger-worker";
+import { upgradeBriefIntelPosts } from "@/lib/intelligence/upgrade-content";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 120;
@@ -26,6 +27,7 @@ export async function POST() {
       monitor = { mode: "embedded", ...cycle };
     }
 
+    const upgraded = await upgradeBriefIntelPosts();
     const autoPublished = await autoProcessIntelUpdates();
 
     if (autoPublished > 0) {
