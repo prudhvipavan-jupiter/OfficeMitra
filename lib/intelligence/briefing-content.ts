@@ -422,8 +422,17 @@ export function buildDetailedBriefingDraft(topic: BriefingTopic): IntelDraft {
 }
 
 export function buildDetailedBriefingByTitle(title: string): IntelDraft | null {
-  const topic = TOPICS.find((t) => t.title === title || title.includes(t.title.slice(0, 30)));
-  if (!topic) return null;
+  const topic = TOPICS.find(
+    (t) =>
+      t.title === title ||
+      title.toLowerCase().includes(t.title.slice(0, 25).toLowerCase()) ||
+      title.toLowerCase().includes("staff briefing") && title.toLowerCase().includes(t.knowledgeSlug.replace(/-/g, " ").slice(0, 8))
+  );
+  if (!topic) {
+    const bySlug = TOPICS.find((t) => title.toLowerCase().includes(t.knowledgeSlug.replace(/-/g, " ")));
+    if (bySlug) return buildDetailedBriefingDraft(bySlug);
+    return null;
+  }
   return buildDetailedBriefingDraft(topic);
 }
 

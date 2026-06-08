@@ -12,8 +12,8 @@ export async function upgradeBriefIntelPosts(): Promise<number> {
   const rows = await sql`
     SELECT id FROM intel_detected_updates
     WHERE status IN ('PUBLISHED', 'DRAFT_GENERATED', 'APPROVED')
-      AND (ai_body IS NULL OR length(ai_body) < ${MIN_BODY_LENGTH})
-    ORDER BY detected_at DESC
+      AND (ai_body IS NULL OR char_length(ai_body) < ${MIN_BODY_LENGTH})
+    ORDER BY published_at DESC NULLS LAST, detected_at DESC
     LIMIT 20
   `;
 
