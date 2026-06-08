@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { loadArticles, loadProcedures, loadUpdates } from "@/lib/cms/loaders";
+import { loadArticles, loadProcedures } from "@/lib/cms/loaders";
+import { getAllPublishedUpdates } from "@/lib/intelligence/merged-updates";
 import { siteConfig } from "@/lib/metadata";
 import { toolDefinitions } from "@/lib/tools/registry";
 
@@ -38,7 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [articles, procedures, updates] = await Promise.all([
     loadArticles(),
     loadProcedures(),
-    loadUpdates(),
+    getAllPublishedUpdates(),
   ]);
 
   const articleEntries = articles.map((a) => ({

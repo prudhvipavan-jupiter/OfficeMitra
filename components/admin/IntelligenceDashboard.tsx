@@ -130,7 +130,7 @@ export function IntelligenceDashboard() {
           </p>
           <SectionHeading
             title="OfficeMitra Intelligence"
-            subtitle="Government source monitoring — detect, draft, review, publish. Nothing auto-publishes."
+            subtitle="Automated monitoring — detects updates, drafts content, and publishes up to 5 posts daily. No manual steps required."
           />
         </div>
         <div className="flex flex-wrap gap-2">

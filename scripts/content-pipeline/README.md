@@ -7,16 +7,25 @@ Generates **50 draft knowledge articles** for admin review before publishing.
 ```powershell
 # 1. Scrape official AP gov portals (optional enrichment)
 pip install -r scripts/content-pipeline/requirements.txt
-npm run content:scrape
+python scripts/content-pipeline/scrape_sources.py
 
 # 2. Generate markdown + SVG hero images
-npm run content:generate
+# Windows PowerShell: use npm.cmd (npm.ps1 is blocked by default execution policy)
+npm.cmd run content:generate
 
-# 3. Import into CMS as drafts (local or Neon via POSTGRES_URL)
-npm run content:import
+# 3. Import into CMS as drafts (local or Neon via POSTGRES_URL in .env)
+npm.cmd run content:import
 
-# Or all at once (skip scrape):
-npm run content:pipeline
+# Or generate + import in one step:
+npm.cmd run content:pipeline
+```
+
+**Windows note:** If you see `npm.ps1 cannot be loaded because running scripts is disabled`, use `npm.cmd` instead of `npm`, or run commands directly:
+
+```powershell
+python scripts/content-pipeline/scrape_sources.py
+node scripts/generate-hero-articles.mjs
+node scripts/import-drafts.mjs
 ```
 
 ## Review workflow

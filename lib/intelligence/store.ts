@@ -418,3 +418,192 @@ export async function publishIntelUpdate(
     reviewed_at: new Date().toISOString(),
   });
 }
+
+export async function getActiveIntelSources(): Promise<IntelSource[]> {
+  const all = await getIntelSources();
+  return all.filter((s) => s.active);
+}
+
+export async function fingerprintExists(fingerprint: string): Promise<boolean> {
+  if (!isDatabaseEnabled()) return false;
+  await ensureIntelTablesExist();
+  const sql = getSql();
+  const rows = await sql`
+    SELECT 1 FROM intel_detected_updates WHERE fingerprint = ${fingerprint} LIMIT 1
+  `;
+  return rows.length > 0;
+}
+
+export async function insertIntelDetectedUpdate(data: {
+  source_id: string;
+  title: string;
+  source_url: string;
+  fingerprint: string;
+  published_date?: string | null;
+}): Promise<string | null> {
+  if (!isDatabaseEnabled()) return null;
+  if (await fingerprintExists(data.fingerprint)) return null;
+
+  await ensureIntelTablesExist();
+  const sql = getSql();
+  const id = crypto.randomUUID();
+
+  await sql`
+    INSERT INTO intel_detected_updates (
+      id, source_id, title, source_url, published_date, fingerprint, status
+    ) VALUES (
+      ${id},
+      ${data.source_id},
+      ${data.title.slice(0, 500)},
+      ${data.source_url.slice(0, 2000)},
+      ${data.published_date ?? null},
+      ${data.fingerprint},
+      'NEW'
+    )
+  `;
+
+  await sql`
+    UPDATE intel_sources SET last_update_found = NOW() WHERE id = ${data.source_id}
+  `;
+
+  return id;
+}
+
+export async function updateIntelSourceChecked(sourceId: string): Promise<void> {
+  if (!isDatabaseEnabled()) return;
+  await ensureIntelTablesExist();
+  const sql = getSql();
+  await sql`UPDATE intel_sources SET last_checked = NOW() WHERE id = ${sourceId}`;
+}
+
+export async function updateIntelSourceConfig(
+  sourceId: string,
+  config: Record<string, unknown>
+): Promise<void> {
+  if (!isDatabaseEnabled()) return;
+  await ensureIntelTablesExist();
+  const sql = getSql();
+  await sql`
+    UPDATE intel_sources SET config = ${JSON.stringify(config)}::jsonb, updated_at = NOW()
+    WHERE id = ${sourceId}
+  `;
+}
+
+export async function saveIntelDraft(
+  updateId: string,
+  draft: {
+    title: string;
+    summary: string;
+    what_changed: string;
+    who_is_affected: string;
+    action_required: string;
+    reference_source: string;
+    department_impact: string;
+    keywords: string[];
+    body: string;
+  }
+): Promise<void> {
+  if (!isDatabaseEnabled()) return;
+  await ensureIntelTablesExist();
+  const sql = getSql();
+  await sql`
+    UPDATE intel_detected_updates SET
+      status = 'DRAFT_GENERATED',
+      ai_title = ${draft.title},
+      ai_summary = ${draft.summary},
+      ai_what_changed = ${draft.what_changed},
+      ai_who_affected = ${draft.who_is_affected},
+      ai_action_required = ${draft.action_required},
+      ai_reference_source = ${draft.reference_source},
+      ai_department_impact = ${draft.department_impact},
+      ai_keywords = ${JSON.stringify(draft.keywords)}::jsonb,
+      ai_body = ${draft.body},
+      updated_at = NOW()
+    WHERE id = ${updateId}
+  `;
+}
+
+export async function getNewIntelUpdatesWithoutDraft(
+  limit = 50
+): Promise<{ id: string }[]> {
+  if (!isDatabaseEnabled()) return [];
+  await ensureIntelTablesExist();
+  const sql = getSql();
+  const rows = await sql`
+    SELECT id FROM intel_detected_updates
+    WHERE status = 'NEW'
+    ORDER BY detected_at ASC
+    LIMIT ${limit}
+  `;
+  return rows.map((r) => ({ id: String((r as Record<string, unknown>).id) }));
+}
+
+export async function countIntelPublishedToday(): Promise<number> {
+  if (!isDatabaseEnabled()) return 0;
+  await ensureIntelTablesExist();
+  const sql = getSql();
+  const [row] = await sql`
+    SELECT COUNT(*)::int AS count FROM intel_detected_updates
+    WHERE status = 'PUBLISHED' AND published_at >= CURRENT_DATE
+  `;
+  return row?.count ?? 0;
+}
+
+export async function countIntelReadyDrafts(): Promise<number> {
+  if (!isDatabaseEnabled()) return 0;
+  await ensureIntelTablesExist();
+  const sql = getSql();
+  const [row] = await sql`
+    SELECT COUNT(*)::int AS count FROM intel_detected_updates
+    WHERE status IN ('DRAFT_GENERATED', 'APPROVED')
+  `;
+  return row?.count ?? 0;
+}
+
+export async function startIntelMonitoringRun(): Promise<string> {
+  if (!isDatabaseEnabled()) return crypto.randomUUID();
+  await ensureIntelTablesExist();
+  const sql = getSql();
+  const id = crypto.randomUUID();
+  await sql`
+    INSERT INTO intel_monitoring_runs (id, status, started_at)
+    VALUES (${id}, 'running', NOW())
+  `;
+  return id;
+}
+
+export async function finishIntelMonitoringRun(
+  runId: string,
+  data: {
+    status: "completed" | "failed";
+    sources_checked: number;
+    items_found: number;
+    drafts_generated: number;
+    error_message?: string | null;
+    details?: Record<string, unknown>;
+  }
+): Promise<void> {
+  if (!isDatabaseEnabled()) return;
+  await ensureIntelTablesExist();
+  const sql = getSql();
+  await sql`
+    UPDATE intel_monitoring_runs SET
+      finished_at = NOW(),
+      status = ${data.status},
+      sources_checked = ${data.sources_checked},
+      items_found = ${data.items_found},
+      drafts_generated = ${data.drafts_generated},
+      error_message = ${data.error_message ?? null},
+      details = ${JSON.stringify(data.details ?? {})}::jsonb
+    WHERE id = ${runId}
+  `;
+}
+
+/** Ensure editorial source and tables exist before monitor runs. */
+export async function ensureIntelInfrastructure(): Promise<void> {
+  if (!isDatabaseEnabled()) return;
+  await ensureIntelTablesExist();
+  const sql = getSql();
+  const { ensureEditorialIntelSource } = await import("@/lib/db/seed-intel-sources");
+  await ensureEditorialIntelSource(sql);
+}

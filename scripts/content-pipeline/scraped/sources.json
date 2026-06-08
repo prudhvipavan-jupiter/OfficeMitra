@@ -20,7 +20,7 @@
     "ok": false,
     "title": "",
     "snippet": "",
-    "error": "HTTPSConnectionPool(host='health.ap.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='health.ap.gov.in', port=443) at 0x17a9591a0d0>, 'Connection to health.ap.gov.in timed out. (connect timeout=20)'))"
+    "error": "HTTPSConnectionPool(host='health.ap.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='health.ap.gov.in', port=443) at 0x1cfb771a0d0>, 'Connection to health.ap.gov.in timed out. (connect timeout=20)'))"
   },
   "https://www.apfinance.ap.gov.in/": {
     "url": "https://www.apfinance.ap.gov.in/",
