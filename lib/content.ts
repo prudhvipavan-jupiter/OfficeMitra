@@ -24,6 +24,7 @@ export interface ArticleFrontmatter {
   author?: string;
   related_procedures?: string[];
   verified_go?: string;
+  verified_at?: string;
   expert_assistance_cta?: boolean;
 }
 
@@ -42,6 +43,7 @@ export interface ProcedureFrontmatter {
   related_articles?: string[];
   checklist?: string[];
   required_documents?: string[];
+  sr_reminder?: string;
 }
 
 export interface Procedure extends ProcedureFrontmatter {

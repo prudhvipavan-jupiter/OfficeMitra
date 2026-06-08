@@ -2,11 +2,15 @@
 
 import { MessageCircle } from "lucide-react";
 import { useTranslations } from "@/components/i18n/LanguageProvider";
+import { useLocale } from "@/components/i18n/LanguageProvider";
+import { buildWhatsAppShareText } from "@/lib/share-text";
 import { cn } from "@/lib/utils";
 
 interface WhatsAppShareProps {
   title: string;
   url: string;
+  slug?: string;
+  contentType?: "article" | "procedure" | "update" | "tool";
   className?: string;
   compact?: boolean;
 }
@@ -14,12 +18,22 @@ interface WhatsAppShareProps {
 export function WhatsAppShare({
   title,
   url,
+  slug,
+  contentType = "article",
   className,
   compact = false,
 }: WhatsAppShareProps) {
   const t = useTranslations();
-  const text = encodeURIComponent(`${title}\n\n${url}`);
-  const href = `https://wa.me/?text=${text}`;
+  const locale = useLocale();
+
+  const text = slug
+    ? buildWhatsAppShareText(
+        { title, slug, type: contentType },
+        locale === "te" ? "te" : "en"
+      )
+    : `${title}\n\n${url}`;
+
+  const href = `https://wa.me/?text=${encodeURIComponent(text)}`;
   const label = compact ? t.whatsapp.short : t.whatsapp.share;
 
   return (

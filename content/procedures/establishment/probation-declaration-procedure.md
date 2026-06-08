@@ -7,6 +7,7 @@ estimated_time: "2-3 working days"
 status: published
 published_at: 2026-06-01
 related_articles: [probation-declaration]
+sr_reminder: "Update Service Register within 7 days of issuing probation declaration order."
 checklist:
   - Verify probation period from appointment order
   - Calculate completion date including EOL extension

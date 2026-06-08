@@ -1,9 +1,10 @@
-import { getUpdates, type UpdateEntry } from "@/lib/content";
+import { loadUpdates } from "@/lib/cms/loaders";
+import type { UpdateEntry } from "@/lib/content";
 import { intelUpdateToPublicEntry } from "@/lib/intelligence/public";
 import { getPublishedIntelUpdates, isIntelligenceEnabled } from "@/lib/intelligence/store";
 
 export async function getAllPublishedUpdates(): Promise<UpdateEntry[]> {
-  const markdown = getUpdates();
+  const markdown = await loadUpdates();
 
   if (!isIntelligenceEnabled()) {
     return markdown;
@@ -23,7 +24,7 @@ export async function getAllPublishedUpdates(): Promise<UpdateEntry[]> {
 export async function getPublishedUpdateBySlug(
   slug: string
 ): Promise<UpdateEntry | undefined> {
-  const markdown = getUpdates().find((u) => u.slug === slug);
+  const markdown = (await loadUpdates()).find((u) => u.slug === slug);
   if (markdown) return markdown;
 
   if (!isIntelligenceEnabled()) return undefined;

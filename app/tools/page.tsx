@@ -2,9 +2,15 @@ import Link from "next/link";
 import {
   Calculator,
   CalendarDays,
-  CalendarRange,
+  CalendarPlus,
+  ClipboardList,
   Clock,
+  Home,
   IndianRupee,
+  Landmark,
+  Percent,
+  ShieldCheck,
+  TrendingDown,
   TrendingUp,
   Wallet,
   type LucideIcon,
@@ -25,10 +31,17 @@ const iconMap: Record<ToolKey, LucideIcon> = {
   elEncashment: CalendarDays,
   gpfRecovery: Wallet,
   servicePeriod: Clock,
-  retirementDate: CalendarRange,
+  retirementDate: CalendarDays,
   incrementDue: TrendingUp,
   payEstimate: IndianRupee,
   workingDays: CalendarDays,
+  payBillChecklist: ClipboardList,
+  apgliPremium: ShieldCheck,
+  hraCalculator: Home,
+  gpfSubscription: Landmark,
+  lwpImpact: TrendingDown,
+  leaveAccrual: CalendarPlus,
+  daArrears: Percent,
 };
 
 export default async function ToolsPage() {
@@ -60,7 +73,7 @@ export default async function ToolsPage() {
             </span>
             <h2 className="mt-4 font-semibold text-navy-900">{title}</h2>
             <p className="mt-2 flex-1 text-sm leading-relaxed text-gray-600">{description}</p>
-            <span className="mt-4 text-sm font-semibold text-gold-700 opacity-0 transition group-hover:opacity-100">
+            <span className="card-link-cta">
               {t.common.learnMore} →
             </span>
           </Link>

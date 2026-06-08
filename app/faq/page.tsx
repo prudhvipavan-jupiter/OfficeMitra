@@ -1,6 +1,6 @@
 import { FaqSearch } from "@/components/faq/FaqSearch";
 import { Container, SectionHeading } from "@/components/ui/Container";
-import { faqItems } from "@/lib/faq";
+import { loadFaqItems } from "@/lib/cms/loaders";
 import { getTranslations } from "@/lib/i18n/server";
 import { createPageMetadata } from "@/lib/metadata";
 
@@ -13,6 +13,7 @@ export const metadata = createPageMetadata({
 
 export default async function FaqPage() {
   const { dict: t, locale } = await getTranslations();
+  const faqItems = await loadFaqItems();
 
   return (
     <Container className="py-10">

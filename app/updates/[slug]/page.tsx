@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { WhatsAppShare } from "@/components/ui/WhatsAppShare";
 
 import { getPublishedUpdateBySlug } from "@/lib/intelligence/merged-updates";
-import { getUpdates } from "@/lib/content";
+import { loadUpdates } from "@/lib/cms/loaders";
 
 import { getTranslations } from "@/lib/i18n/server";
 
@@ -30,9 +30,8 @@ interface PageProps {
 export const dynamic = "force-dynamic";
 
 export async function generateStaticParams() {
-
-  return getUpdates().map((u) => ({ slug: u.slug }));
-
+  const updates = await loadUpdates();
+  return updates.map((u) => ({ slug: u.slug }));
 }
 
 
@@ -80,13 +79,11 @@ export default async function UpdatePage({ params }: PageProps) {
         </time>
 
         <WhatsAppShare
-
           title={update.title}
-
           url={`${siteConfig.url}/updates/${update.slug}`}
-
+          slug={update.slug}
+          contentType="update"
           compact
-
         />
 
       </div>

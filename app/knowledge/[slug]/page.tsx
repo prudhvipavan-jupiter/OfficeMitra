@@ -3,9 +3,11 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 
 import { ExpertBanner } from "@/components/home/ExpertBanner";
-
 import { ArticleFeedback } from "@/components/feedback/ArticleFeedback";
+import { ArticleResources } from "@/components/article/ArticleResources";
+import { MobileTableOfContents } from "@/components/article/MobileTableOfContents";
 import { TableOfContents } from "@/components/article/TableOfContents";
+import { VerifiedBadge } from "@/components/article/VerifiedBadge";
 import { WorkflowStrip } from "@/components/article/WorkflowStrip";
 
 import { Container } from "@/components/ui/Container";
@@ -13,16 +15,10 @@ import { Container } from "@/components/ui/Container";
 import { WhatsAppShare } from "@/components/ui/WhatsAppShare";
 
 import {
-
   extractHeadings,
-
-  getArticles,
-
-  getArticleBySlug,
-
   type ArticleCategory,
-
 } from "@/lib/content";
+import { loadArticles, loadArticleBySlug } from "@/lib/cms/loaders";
 
 import { getTranslations } from "@/lib/i18n/server";
 
@@ -44,16 +40,15 @@ interface PageProps {
 
 
 export async function generateStaticParams() {
-
-  return getArticles().map((a) => ({ slug: a.slug }));
-
+  const articles = await loadArticles();
+  return articles.map((a) => ({ slug: a.slug }));
 }
 
 
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const article = await loadArticleBySlug(slug);
   if (!article) return {};
   const url = `${siteConfig.url}/knowledge/${slug}`;
   return {
@@ -78,7 +73,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
   const { dict: t, locale } = await getTranslations();
 
-  const article = getArticleBySlug(slug);
+  const article = await loadArticleBySlug(slug);
 
   if (!article) notFound();
 
@@ -86,7 +81,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
   const headings = extractHeadings(article.content);
 
-  const related = getArticles()
+  const related = (await loadArticles())
 
     .filter((a) => a.category === article.category && a.slug !== slug)
 
@@ -189,7 +184,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
           <p className="mt-3 text-lg text-gray-600">{article.summary}</p>
 
-
+          <MobileTableOfContents headings={headings} />
 
           <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-gray-500">
 
@@ -203,24 +198,18 @@ export default async function ArticlePage({ params }: PageProps) {
 
             )}
 
-            {article.verified_go && (
-
-              <span className="rounded bg-gold-100 px-2 py-0.5 text-gold-600">
-
-                {article.verified_go}
-
-              </span>
-
+            {article.verified_at && (
+              <VerifiedBadge verifiedAt={article.verified_at} />
             )}
-
+            {!article.verified_at && article.verified_go && (
+              <VerifiedBadge note={article.verified_go} />
+            )}
             <WhatsAppShare
-
               title={article.title}
-
               url={`${siteConfig.url}/knowledge/${article.slug}`}
-
+              slug={article.slug}
+              contentType="article"
               compact
-
             />
 
           </div>
@@ -262,40 +251,25 @@ export default async function ArticlePage({ params }: PageProps) {
 
 
           <div className="prose-article mt-10">
-
             <ReactMarkdown
-
               components={{
-
                 h2: ({ children }) => {
-
                   const text = String(children);
-
                   const id = text
-
                     .replace(/\s*\{#[^}]+\}\s*$/, "")
-
                     .toLowerCase()
-
                     .replace(/[^a-z0-9]+/g, "-")
-
                     .replace(/(^-|-$)/g, "");
-
                   const display = text.replace(/\s*\{#[^}]+\}\s*$/, "");
-
                   return <h2 id={id}>{display}</h2>;
-
                 },
-
               }}
-
             >
-
               {contentWithIds}
-
             </ReactMarkdown>
-
           </div>
+
+          <ArticleResources slug={article.slug} />
 
           <div className="mt-8">
             <ArticleFeedback slug={article.slug} />

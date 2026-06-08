@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { logAdminAction } from "@/lib/admin-log";
 import { isAdminAuthenticated } from "@/lib/auth";
 import { getExpertRequests, updateExpertRequest } from "@/lib/db/requests";
 import { sendStatusUpdate } from "@/lib/email";
@@ -41,6 +42,12 @@ export async function PATCH(request: NextRequest) {
       response_notes: response_notes,
     });
   }
+
+  await logAdminAction("expert_request_update", {
+    id,
+    status: updated.status,
+    notified: String(!!shouldNotify),
+  });
 
   return NextResponse.json({ request: updated });
 }

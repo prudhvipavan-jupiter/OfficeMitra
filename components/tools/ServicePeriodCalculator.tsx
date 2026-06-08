@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { useTranslations } from "@/components/i18n/LanguageProvider";
 import { ToolPageShell, ToolResultBox, inputClass, labelClass } from "./ToolPageShell";
+import { CalendarExportButton } from "./CalendarExport";
 
 function diffYMD(from: Date, to: Date) {
   let years = to.getFullYear() - from.getFullYear();
@@ -97,7 +98,7 @@ export function RetirementDateCalculatorPage() {
     if (Number.isNaN(birth.getTime())) return null;
     const retirement = new Date(birth);
     retirement.setFullYear(retirement.getFullYear() + age);
-    return formatDate(retirement);
+    return { label: formatDate(retirement), date: retirement };
   }, [dob, age]);
 
   return (
@@ -132,9 +133,19 @@ export function RetirementDateCalculatorPage() {
           </div>
         </div>
         {result && (
-          <ToolResultBox
-            items={[{ label: tr.retirementDate, value: result, highlight: true }]}
-          />
+          <>
+            <ToolResultBox
+              items={[{ label: tr.retirementDate, value: result.label, highlight: true }]}
+            />
+            <div className="mt-4">
+              <CalendarExportButton
+                title="Retirement — OfficeMitra reminder"
+                date={result.date}
+                description={`Estimated superannuation date: ${result.label}. Verify with service rules.`}
+                label={t.calendar.addToCalendar}
+              />
+            </div>
+          </>
         )}
       </div>
     </ToolPageShell>
@@ -156,6 +167,7 @@ export function IncrementDueCalculatorPage() {
     prepStart.setDate(prepStart.getDate() - 30);
     return {
       nextDue: formatDate(next),
+      nextDate: next,
       prepFrom: formatDate(prepStart),
     };
   }, [lastIncrement, intervalMonths]);
@@ -192,12 +204,22 @@ export function IncrementDueCalculatorPage() {
           </div>
         </div>
         {result && (
-          <ToolResultBox
-            items={[
-              { label: tr.nextDueDate, value: result.nextDue, highlight: true },
-              { label: tr.prepFrom, value: result.prepFrom },
-            ]}
-          />
+          <>
+            <ToolResultBox
+              items={[
+                { label: tr.nextDueDate, value: result.nextDue, highlight: true },
+                { label: tr.prepFrom, value: result.prepFrom },
+              ]}
+            />
+            <div className="mt-4">
+              <CalendarExportButton
+                title="Increment due — OfficeMitra reminder"
+                date={result.nextDate}
+                description={`Next increment due: ${result.nextDue}. Start SR prep from ${result.prepFrom}.`}
+                label={t.calendar.addToCalendar}
+              />
+            </div>
+          </>
         )}
       </div>
     </ToolPageShell>

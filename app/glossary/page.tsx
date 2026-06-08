@@ -1,6 +1,6 @@
 import { GlossarySearch } from "@/components/glossary/GlossarySearch";
 import { Container, SectionHeading } from "@/components/ui/Container";
-import { glossaryTerms } from "@/lib/glossary";
+import { loadGlossaryTerms } from "@/lib/cms/loaders";
 import { getTranslations } from "@/lib/i18n/server";
 import { createPageMetadata } from "@/lib/metadata";
 
@@ -13,6 +13,7 @@ export const metadata = createPageMetadata({
 
 export default async function GlossaryPage() {
   const { dict: t } = await getTranslations();
+  const glossaryTerms = await loadGlossaryTerms();
 
   return (
     <Container className="py-10">

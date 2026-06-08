@@ -3,7 +3,7 @@ import path from "path";
 import type { ArticleCategory } from "@/lib/categories";
 import { ensureSchema, getSql, isDatabaseEnabled } from "./client";
 
-export type DiscussionStatus = "pending" | "published" | "closed";
+export type DiscussionStatus = "pending" | "published" | "closed" | "resolved";
 
 export interface DiscussionReply {
   id: string;

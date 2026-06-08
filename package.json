@@ -9,7 +9,8 @@
     "lint": "next lint",
     "seed": "node scripts/seed-launch.mjs",
     "db:setup": "node scripts/setup-db.mjs",
-    "docs:pdfs": "node scripts/generate-document-pdfs.mjs"
+    "docs:pdfs": "node scripts/generate-document-pdfs.mjs",
+    "cms:sync": "node scripts/cms-auto-sync.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",

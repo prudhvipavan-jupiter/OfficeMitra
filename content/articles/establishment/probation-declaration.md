@@ -6,6 +6,7 @@ tags: [probation, establishment, health-department]
 telugu_summary: "Probation declaration procedure — eligibility, proceedings, SR entry."
 telugu_overview: "ప్రభుత్వ ఉద్యోగి probation పూర్తి అయిన తర్వాత probation declare చేయడం establishment section బాధ్యత. appointment order లో probation period చూడండి, ACRs సేకరించండి, disciplinary cases లేవని confirm చేయండి. proceedings draft చేసి Head of Office approval తీసుకొని order issue చేయండి. Service Register మరియు service book update చేయడం తప్పనిసరి."
 updated_at: 2026-06-07
+verified_at: "2026-06-07"
 summary: "How to declare probation for Health Department staff under AP service rules — eligibility, proceedings, SR entry, and common audit objections."
 status: published
 published_at: 2026-06-01

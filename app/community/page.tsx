@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CommunityForm } from "@/components/community/CommunityForm";
 import { DiscussionList } from "@/components/community/DiscussionList";
 import { Container, SectionHeading } from "@/components/ui/Container";
@@ -14,9 +15,8 @@ export const metadata = createPageMetadata({
   path: "/community",
 });
 
-export default async function CommunityPage() {
-  const { dict: t } = await getTranslations();
-  const discussions = (await getDiscussions({ status: "published" })).map((d) => ({
+function mapDiscussion(d: Awaited<ReturnType<typeof getDiscussions>>[number]) {
+  return {
     id: d.id,
     created_at: d.created_at,
     author_name: d.author_name,
@@ -27,7 +27,14 @@ export default async function CommunityPage() {
     body: d.body,
     reply_count: d.replies.length,
     views: d.views,
-  }));
+    status: d.status,
+  };
+}
+
+export default async function CommunityPage() {
+  const { dict: t } = await getTranslations();
+  const published = (await getDiscussions({ status: "published" })).map(mapDiscussion);
+  const resolved = (await getDiscussions({ status: "resolved" })).map(mapDiscussion);
 
   return (
     <Container className="py-10">
@@ -35,14 +42,29 @@ export default async function CommunityPage() {
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_380px]">
         <div>
+          {resolved.length > 0 && (
+            <section className="mb-10">
+              <h2 className="text-lg font-semibold text-navy-900">{t.community.solvedTitle}</h2>
+              <div className="mt-4">
+                <DiscussionList discussions={resolved} />
+              </div>
+            </section>
+          )}
+
           <h2 className="text-lg font-semibold text-navy-900">{t.community.recentTitle}</h2>
           <div className="mt-4">
-            <DiscussionList discussions={discussions} />
+            <DiscussionList discussions={published} />
           </div>
+
+          <p className="mt-6 text-sm text-gray-500">
+            {t.community.moderationNote}{" "}
+            <Link href="/faq" className="text-navy-700 underline">
+              FAQ
+            </Link>
+          </p>
         </div>
         <aside>
           <CommunityForm />
-          <p className="mt-4 text-xs leading-relaxed text-gray-500">{t.community.moderationNote}</p>
         </aside>
       </div>
     </Container>

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MessageSquare, Eye } from "lucide-react";
+import { CheckCircle2, MessageSquare, Eye } from "lucide-react";
 import { useTranslations } from "@/components/i18n/LanguageProvider";
 import { formatDate } from "@/lib/utils";
 
@@ -16,6 +16,7 @@ export interface DiscussionListItem {
   body: string;
   reply_count: number;
   views: number;
+  status?: string;
 }
 
 interface DiscussionListProps {
@@ -47,6 +48,12 @@ export function DiscussionList({ discussions }: DiscussionListProps) {
                   ? t.community.categories.general
                   : (t.categories as Record<string, string>)[d.category] ?? d.category}
               </span>
+              {d.status === "resolved" && (
+                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2.5 py-0.5 font-medium text-emerald-800">
+                  <CheckCircle2 className="h-3 w-3" />
+                  {t.community.resolved}
+                </span>
+              )}
               <time dateTime={d.created_at} className="text-gray-500">
                 {formatDate(d.created_at)}
               </time>

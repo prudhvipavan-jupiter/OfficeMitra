@@ -51,8 +51,8 @@ export function filterDocuments(filters: {
   category?: string;
   type?: string;
   q?: string;
-}): DocumentRecord[] {
-  let docs = getDocuments();
+}, source?: DocumentRecord[]): DocumentRecord[] {
+  let docs = source ?? getDocuments();
 
   if (filters.department) {
     docs = docs.filter((d) =>

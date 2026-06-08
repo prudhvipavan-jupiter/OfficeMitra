@@ -30,11 +30,11 @@ export function SectionHeading({ title, subtitle, action }: SectionHeadingProps)
   return (
     <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
       <div className="max-w-2xl">
-        <h2 className="text-2xl font-bold tracking-tight text-navy-900 md:text-3xl">
+        <h2 className="text-2xl font-bold tracking-tight text-navy-900 dark:text-navy-50 md:text-3xl">
           {title}
         </h2>
         {subtitle && (
-          <p className="mt-2 text-base leading-relaxed text-gray-600">{subtitle}</p>
+          <p className="mt-2 text-base leading-relaxed text-gray-600 dark:text-navy-300">{subtitle}</p>
         )}
       </div>
       {action}

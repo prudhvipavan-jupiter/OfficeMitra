@@ -5,7 +5,13 @@ import { useLanguage } from "@/components/i18n/LanguageProvider";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/lib/i18n/types";
 
-export function LanguageSwitcher({ compact }: { compact?: boolean }) {
+export function LanguageSwitcher({
+  compact,
+  className,
+}: {
+  compact?: boolean;
+  className?: string;
+}) {
   const { locale, dict, setLocale } = useLanguage();
 
   const options: { code: Locale; label: string }[] = [
@@ -17,7 +23,8 @@ export function LanguageSwitcher({ compact }: { compact?: boolean }) {
     <div
       className={cn(
         "flex items-center gap-1 rounded-md border border-navy-700 bg-navy-800 p-0.5",
-        compact && "text-xs"
+        compact && "text-xs",
+        className
       )}
       role="group"
       aria-label={dict.language.label}

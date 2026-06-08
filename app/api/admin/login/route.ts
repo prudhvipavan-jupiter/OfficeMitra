@@ -1,11 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
-import { setAdminSession, verifyAdminPassword } from "@/lib/auth";
+import { applyAdminSessionCookie, verifyAdminPassword } from "@/lib/auth";
 
 export async function POST(request: NextRequest) {
-  const { password } = await request.json();
+  let password = "";
+  try {
+    const body = await request.json();
+    password = typeof body?.password === "string" ? body.password : "";
+  } catch {
+    return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+  }
+
   if (!verifyAdminPassword(password)) {
     return NextResponse.json({ error: "Invalid password" }, { status: 401 });
   }
-  await setAdminSession();
-  return NextResponse.json({ success: true });
+
+  return applyAdminSessionCookie(NextResponse.json({ success: true }));
 }

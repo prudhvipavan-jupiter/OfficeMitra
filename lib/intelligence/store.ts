@@ -96,14 +96,6 @@ function rowUpdate(row: Record<string, unknown>): IntelDetectedUpdate {
 async function ensureIntelTablesExist() {
   if (!isDatabaseEnabled()) return;
   await ensureSchema();
-  const sql = getSql();
-  try {
-    await sql`SELECT 1 FROM intel_sources LIMIT 1`;
-  } catch {
-    throw new Error(
-      "Intelligence tables not found. Run supabase/migrations/001_intelligence_engine.sql on your Postgres database."
-    );
-  }
 }
 
 export function isIntelligenceEnabled(): boolean {

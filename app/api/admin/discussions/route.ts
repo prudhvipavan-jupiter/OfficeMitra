@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { logAdminAction } from "@/lib/admin-log";
 import { isAdminAuthenticated } from "@/lib/auth";
 import {
   getDiscussions,
@@ -37,5 +38,11 @@ export async function PATCH(request: NextRequest) {
   if (!updated) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
+
+  await logAdminAction("discussion_update", {
+    id,
+    status: updated.status,
+  });
+
   return NextResponse.json({ discussion: updated });
 }

@@ -119,7 +119,13 @@ export function ProcedureView({ procedure, shareUrl }: ProcedureViewProps) {
 
               </button>
 
-              <WhatsAppShare title={procedure.title} url={shareUrl} compact />
+              <WhatsAppShare
+                title={procedure.title}
+                url={shareUrl}
+                slug={procedure.slug}
+                contentType="procedure"
+                compact
+              />
 
             </div>
 
@@ -144,6 +150,12 @@ export function ProcedureView({ procedure, shareUrl }: ProcedureViewProps) {
             </Link>
 
           ))}
+
+          {procedure.sr_reminder && (
+            <p className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+              <strong>SR reminder:</strong> {procedure.sr_reminder}
+            </p>
+          )}
 
 
 

@@ -60,7 +60,6 @@ export function ToolResultBox({
   );
 }
 
-export const inputClass =
-  "mt-1 w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-navy-600 focus:outline-none focus:ring-1 focus:ring-navy-600";
+export const inputClass = "input-field mt-1";
 
 export const labelClass = "block text-sm font-medium text-gray-700";

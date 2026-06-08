@@ -60,3 +60,7 @@ export function useLanguage() {
 export function useTranslations() {
   return useLanguage().dict;
 }
+
+export function useLocale() {
+  return useLanguage().locale;
+}

@@ -134,16 +134,10 @@ export function IntelligenceDashboard() {
           />
         </div>
         <div className="flex flex-wrap gap-2">
-          <Link
-            href="/admin"
-            className="rounded-lg border border-navy-200 px-4 py-2 text-sm text-navy-700 hover:bg-navy-50"
-          >
-            ← Admin Home
-          </Link>
           <button
             type="button"
             onClick={() => load(tab)}
-            className="inline-flex items-center gap-2 rounded-lg border border-navy-200 px-4 py-2 text-sm text-navy-700 hover:bg-navy-50"
+            className="inline-flex items-center gap-2 rounded-lg border border-navy-200 px-4 py-2 text-sm text-navy-700 hover:bg-navy-50 dark:border-navy-600 dark:text-navy-100 dark:hover:bg-navy-800"
           >
             <RefreshCw className="h-4 w-4" />
             Refresh

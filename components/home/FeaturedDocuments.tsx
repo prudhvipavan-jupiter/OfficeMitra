@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { ArrowRight, Download, FileText } from "lucide-react";
 import { Container, SectionHeading } from "@/components/ui/Container";
-import { getDocuments } from "@/lib/documents";
+import { loadDocuments } from "@/lib/cms/loaders";
 import type { DocumentType } from "@/lib/documents";
 import { formatDate } from "@/lib/utils";
 import { getTranslations } from "@/lib/i18n/server";
 
 export async function FeaturedDocuments() {
   const { dict: t } = await getTranslations();
-  const documents = getDocuments().slice(0, 3);
+  const documents = (await loadDocuments()).slice(0, 3);
 
   return (
     <section className="section-alt py-16 md:py-20">

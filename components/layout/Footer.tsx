@@ -21,6 +21,8 @@ export async function Footer() {
     { href: "/tools", label: t.nav.tools },
     { href: "/official-links", label: t.nav.officialLinks },
     { href: "/departments/health", label: t.departments.health.title },
+    { href: "/departments/finance", label: t.departments.finance.title },
+    { href: "/departments/education", label: t.departments.education.title },
     { href: "/expert-assistance", label: t.nav.expertAssistance },
   ];
 
@@ -64,7 +66,7 @@ export async function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <p className="text-sm font-semibold text-white">Resources</p>
+            <p className="text-sm font-semibold text-white">{t.footer.resources}</p>
             <ul className="mt-4 space-y-2.5 text-sm">
               {resourceLinks.map((link) => (
                 <li key={link.href}>

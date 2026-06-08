@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { LanguageProvider } from "@/components/i18n/LanguageProvider";
-import { Footer } from "@/components/layout/Footer";
-import { Header } from "@/components/layout/Header";
+import { SiteChrome } from "@/components/layout/SiteChrome";
+import { SkipLink } from "@/components/layout/SkipLink";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import { ThemeScript } from "@/components/theme/ThemeScript";
 import { getLocale } from "@/lib/i18n/server";
 import { siteConfig } from "@/lib/metadata";
 import "./globals.css";
@@ -30,7 +32,11 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: ["/opengraph-image"],
   },
-  robots: { index: true, follow: true },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: siteConfig.name,
+  },
 };
 
 const jsonLd = {
@@ -54,19 +60,21 @@ export default async function RootLayout({
   const locale = await getLocale();
 
   return (
-    <html lang={locale === "te" ? "te" : "en"}>
+    <html lang={locale === "te" ? "te" : "en"} suppressHydrationWarning>
       <head>
+        <ThemeScript />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body className={`${inter.className} flex min-h-screen flex-col antialiased`}>
-        <LanguageProvider initialLocale={locale}>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider initialLocale={locale}>
+            <SkipLink />
+            <SiteChrome>{children}</SiteChrome>
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

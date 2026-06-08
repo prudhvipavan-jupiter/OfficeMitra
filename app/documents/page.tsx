@@ -4,15 +4,8 @@ import { Download, FileText } from "lucide-react";
 
 import { Container, SectionHeading } from "@/components/ui/Container";
 
-import {
-
-  filterDocuments,
-
-  getDocuments,
-
-  type DocumentType,
-
-} from "@/lib/documents";
+import { filterDocuments, type DocumentType } from "@/lib/documents";
+import { loadDocuments } from "@/lib/cms/loaders";
 
 import { getTranslations } from "@/lib/i18n/server";
 
@@ -64,9 +57,8 @@ export default async function DocumentsPage({ searchParams }: PageProps) {
 
   const { dict: t } = await getTranslations();
 
-  const documents = filterDocuments(params);
-
-  const allDocs = getDocuments();
+  const allDocs = await loadDocuments();
+  const documents = filterDocuments(params, allDocs);
 
   const years = [...new Set(allDocs.map((d) => d.year))].sort((a, b) => b - a);
 
@@ -94,7 +86,7 @@ export default async function DocumentsPage({ searchParams }: PageProps) {
 
           placeholder={t.documents.searchPlaceholder}
 
-          className="rounded-lg border border-gray-200 px-3 py-2 text-sm lg:col-span-2"
+          className="input-field lg:col-span-2"
 
         />
 
@@ -104,7 +96,7 @@ export default async function DocumentsPage({ searchParams }: PageProps) {
 
           defaultValue={params.category ?? ""}
 
-          className="rounded-lg border border-gray-200 px-3 py-2 text-sm"
+          className="input-field"
 
         >
 
@@ -128,7 +120,7 @@ export default async function DocumentsPage({ searchParams }: PageProps) {
 
           defaultValue={params.year ?? ""}
 
-          className="rounded-lg border border-gray-200 px-3 py-2 text-sm"
+          className="input-field"
 
         >
 
@@ -152,7 +144,7 @@ export default async function DocumentsPage({ searchParams }: PageProps) {
 
           defaultValue={params.type ?? ""}
 
-          className="rounded-lg border border-gray-200 px-3 py-2 text-sm"
+          className="input-field"
 
         >
 
@@ -174,7 +166,7 @@ export default async function DocumentsPage({ searchParams }: PageProps) {
 
           type="submit"
 
-          className="rounded-lg bg-navy-700 px-4 py-2 text-sm font-medium text-white sm:col-span-2 lg:col-span-1"
+          className="rounded-lg bg-navy-700 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-navy-600 sm:col-span-2 lg:col-span-1"
 
         >
 

@@ -11,6 +11,7 @@ published_at: 2026-06-01
 updated_at: 2026-06-07
 author: OfficeMitra
 related_procedures: [bill-submission-procedure]
+verified_at: "2026-06-07"
 verified_go: "Verify current GO on GOIR before processing"
 expert_assistance_cta: true
 ---

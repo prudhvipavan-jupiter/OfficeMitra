@@ -18,7 +18,7 @@ export function ExpertBanner({ articleSlug, fullWidth }: ExpertBannerProps) {
     : "/expert-assistance";
 
   const inner = (
-    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gold-100 via-gold-50 to-white p-8 ring-1 ring-gold-200/80 md:p-10">
+    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gold-100 via-gold-50 to-white p-8 ring-1 ring-gold-200/80 dark:from-navy-800 dark:via-navy-800 dark:to-navy-900 dark:ring-navy-600 md:p-10">
       <div
         className="pointer-events-none absolute -right-8 -top-8 h-40 w-40 rounded-full bg-gold-200/40 blur-2xl"
         aria-hidden
@@ -31,7 +31,7 @@ export function ExpertBanner({ articleSlug, fullWidth }: ExpertBannerProps) {
           <h2 className="mt-2 text-2xl font-bold text-navy-900 md:text-3xl">
             {t.expertBanner.title}
           </h2>
-          <p className="mt-3 text-base leading-relaxed text-gray-700">
+          <p className="mt-3 text-base leading-relaxed text-gray-700 dark:text-navy-200">
             {t.expertBanner.description}
           </p>
         </div>
@@ -44,10 +44,10 @@ export function ExpertBanner({ articleSlug, fullWidth }: ExpertBannerProps) {
             {t.expertBanner.cta}
           </Link>
           <Link
-            href="/expert-assistance"
-            className="inline-flex items-center justify-center rounded-xl border-2 border-navy-800 px-6 py-3.5 font-semibold text-navy-900 transition hover:bg-white"
+            href="/expert-assistance/track"
+            className="inline-flex items-center justify-center rounded-xl border-2 border-navy-800 px-6 py-3.5 font-semibold text-navy-900 transition hover:bg-white dark:border-navy-400 dark:text-navy-100 dark:hover:bg-navy-700"
           >
-            {t.common.learnMore}
+            {t.common.track}
           </Link>
         </div>
       </div>

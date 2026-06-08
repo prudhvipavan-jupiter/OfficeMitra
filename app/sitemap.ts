@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
-import { getArticles, getProcedures, getUpdates } from "@/lib/content";
+import { loadArticles, loadProcedures, loadUpdates } from "@/lib/cms/loaders";
 import { siteConfig } from "@/lib/metadata";
+import { toolDefinitions } from "@/lib/tools/registry";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = siteConfig.url;
 
   const staticPages = [
@@ -14,18 +15,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/updates",
     "/official-links",
     "/tools",
-    "/tools/probation-calculator",
-    "/tools/el-encashment-calculator",
-    "/tools/gpf-recovery-calculator",
-    "/tools/service-period-calculator",
-    "/tools/retirement-date-calculator",
-    "/tools/increment-due-calculator",
-    "/tools/pay-estimate-calculator",
-    "/tools/working-days-calculator",
+    ...toolDefinitions.map((t) => t.href),
     "/community",
     "/faq",
     "/glossary",
     "/departments/health",
+    "/departments/finance",
+    "/departments/education",
     "/expert-assistance",
     "/search",
     "/about",
@@ -39,26 +35,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: path === "" ? 1 : 0.8,
   }));
 
-  const articles = getArticles().map((a) => ({
+  const [articles, procedures, updates] = await Promise.all([
+    loadArticles(),
+    loadProcedures(),
+    loadUpdates(),
+  ]);
+
+  const articleEntries = articles.map((a) => ({
     url: `${base}/knowledge/${a.slug}`,
     lastModified: new Date(a.updated_at ?? a.published_at),
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
 
-  const procedures = getProcedures().map((p) => ({
+  const procedureEntries = procedures.map((p) => ({
     url: `${base}/procedures/${p.slug}`,
     lastModified: new Date(p.published_at),
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
 
-  const updates = getUpdates().map((u) => ({
+  const updateEntries = updates.map((u) => ({
     url: `${base}/updates/${u.slug}`,
     lastModified: new Date(u.date),
     changeFrequency: "weekly" as const,
     priority: 0.6,
   }));
 
-  return [...staticPages, ...articles, ...procedures, ...updates];
+  return [...staticPages, ...articleEntries, ...procedureEntries, ...updateEntries];
 }

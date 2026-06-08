@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {
-  AlertTriangle,
   BookOpen,
   Calculator,
   FileText,
@@ -11,40 +10,6 @@ import {
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { getTranslations } from "@/lib/i18n/server";
-
-export async function StaffAlertsBar() {
-  const { dict: t } = await getTranslations();
-
-  const alerts = [
-    { label: t.alerts.verifyGo, href: "/official-links", icon: AlertTriangle },
-    { label: t.alerts.expertAvailable, href: "/expert-assistance", icon: Users },
-    { label: t.alerts.communityLive, href: "/community", icon: MessageCircle },
-  ];
-
-  return (
-    <div className="border-b border-gold-200/80 bg-gradient-to-r from-gold-50 via-gold-100/80 to-gold-50">
-      <Container className="py-3">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
-          <span className="shrink-0 text-center text-xs font-bold uppercase tracking-wider text-navy-800 sm:text-left">
-            {t.alerts.title}
-          </span>
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {alerts.map(({ label, href, icon: Icon }) => (
-              <Link
-                key={href}
-                href={href}
-                className="inline-flex items-center gap-1.5 rounded-full border border-gold-300/60 bg-white/80 px-3 py-1.5 text-xs font-medium text-navy-800 shadow-sm transition hover:border-gold-500 hover:bg-white hover:shadow"
-              >
-                <Icon className="h-3.5 w-3.5 shrink-0 text-gold-600" />
-                <span className="line-clamp-1">{label}</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </Container>
-    </div>
-  );
-}
 
 export async function OneStopHub() {
   const { dict: t } = await getTranslations();
@@ -61,7 +26,7 @@ export async function OneStopHub() {
   ];
 
   return (
-    <section className="py-16 md:py-20">
+    <section className="section-alt py-14 md:py-16">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-semibold uppercase tracking-wider text-gold-600">
@@ -79,14 +44,14 @@ export async function OneStopHub() {
             <Link
               key={href}
               href={href}
-              className="card-hover group flex flex-col rounded-2xl border border-navy-100 bg-white p-6 shadow-sm"
+              className="card-hover group flex flex-col rounded-2xl border border-navy-100 bg-white p-6 shadow-sm dark:border-navy-700 dark:bg-navy-800/80"
             >
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-navy-50 text-navy-700 transition group-hover:bg-gold-100 group-hover:text-gold-700">
                 <Icon className="h-5 w-5" />
               </span>
               <h3 className="mt-4 font-semibold text-navy-900">{title}</h3>
               <p className="mt-2 flex-1 text-sm leading-relaxed text-gray-600">{desc}</p>
-              <span className="mt-4 text-sm font-semibold text-gold-700 opacity-0 transition group-hover:opacity-100">
+              <span className="card-link-cta">
                 {t.common.learnMore} →
               </span>
             </Link>
