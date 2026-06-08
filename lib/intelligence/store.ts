@@ -173,7 +173,7 @@ export async function getIntelDashboardStats(): Promise<IntelDashboardStats> {
 
   const [detectedToday] = await sql`
     SELECT COUNT(*)::int AS count FROM intel_detected_updates
-    WHERE detected_at >= CURRENT_DATE
+    WHERE (detected_at AT TIME ZONE 'Asia/Kolkata')::date = (NOW() AT TIME ZONE 'Asia/Kolkata')::date
   `;
   const [pending] = await sql`
     SELECT COUNT(*)::int AS count FROM intel_detected_updates
@@ -181,7 +181,8 @@ export async function getIntelDashboardStats(): Promise<IntelDashboardStats> {
   `;
   const [publishedToday] = await sql`
     SELECT COUNT(*)::int AS count FROM intel_detected_updates
-    WHERE status = 'PUBLISHED' AND published_at >= CURRENT_DATE
+    WHERE status = 'PUBLISHED'
+      AND (published_at AT TIME ZONE 'Asia/Kolkata')::date = (NOW() AT TIME ZONE 'Asia/Kolkata')::date
   `;
   const [sources] = await sql`
     SELECT COUNT(*)::int AS total, COUNT(*) FILTER (WHERE active)::int AS active
@@ -544,7 +545,8 @@ export async function countIntelPublishedToday(): Promise<number> {
   const sql = getSql();
   const [row] = await sql`
     SELECT COUNT(*)::int AS count FROM intel_detected_updates
-    WHERE status = 'PUBLISHED' AND published_at >= CURRENT_DATE
+    WHERE status = 'PUBLISHED'
+      AND (published_at AT TIME ZONE 'Asia/Kolkata')::date = (NOW() AT TIME ZONE 'Asia/Kolkata')::date
   `;
   return row?.count ?? 0;
 }
