@@ -4,6 +4,7 @@
  */
 import { makeFingerprint } from "./fingerprint";
 import {
+  ensureIntelInfrastructure,
   fingerprintExists,
   insertIntelDetectedUpdate,
   logIntelActivity,
@@ -117,7 +118,6 @@ function dayIndex(): number {
 export async function fillEditorialBriefings(needed: number): Promise<number> {
   if (needed <= 0) return 0;
 
-  const { ensureIntelInfrastructure } = await import("./store");
   await ensureIntelInfrastructure();
 
   let created = 0;
