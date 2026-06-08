@@ -1,161 +1,141 @@
 [
   {
     "id": "go-probation-rules",
-    "title": "GO Ms.No.123 — Probation Rules Amendment",
-    "type": "go",
-    "number": "GO Ms.No.123",
+    "title": "Probation Rules — Reference Guide",
+    "type": "manual",
+    "number": "Verify on GOIR",
     "date": "2020-05-15",
     "department": "General Administration",
     "category": "establishment",
     "year": 2020,
-    "subject": "Amendment to probation rules for AP state services",
-    "related_articles": [
-      "probation-declaration"
-    ],
+    "subject": "Reference summary — verify current probation GO on GOIR before action",
+    "related_articles": ["probation-declaration"],
     "file": "/downloads/documents/go-probation-rules.pdf",
     "goir_url": "https://goir.ap.gov.in/"
   },
   {
     "id": "go-promotion-sr",
-    "title": "GO Ms.No.45 — Promotion and Seniority",
-    "type": "go",
-    "number": "GO Ms.No.45",
+    "title": "Promotion & Seniority — Reference Guide",
+    "type": "manual",
+    "number": "Verify on GOIR",
     "date": "2019-03-10",
     "department": "General Administration",
     "category": "establishment",
     "year": 2019,
-    "subject": "Rules on promotion and seniority fixation",
-    "related_articles": [
-      "promotion-zone-category"
-    ],
+    "subject": "Reference summary — verify promotion and seniority rules on GOIR",
+    "related_articles": ["promotion-zone-category"],
     "file": "/downloads/documents/go-promotion-sr.pdf",
     "goir_url": "https://goir.ap.gov.in/"
   },
   {
     "id": "go-leave-rules",
-    "title": "AP Leave Rules — Extract",
+    "title": "AP Leave Rules — Reference Extract",
     "type": "manual",
     "number": "Leave Rules",
     "date": "2022-01-01",
     "department": "Finance Department",
     "category": "leave",
     "year": 2022,
-    "subject": "Earned leave and encashment provisions",
-    "related_articles": [
-      "el-encashment-retirement"
-    ],
+    "subject": "Earned leave and encashment — verify on GOIR",
+    "related_articles": ["el-encashment-retirement"],
     "file": "/downloads/documents/go-leave-rules.pdf",
     "goir_url": "https://goir.ap.gov.in/"
   },
   {
     "id": "go-apgli-scheme",
-    "title": "APGLI Scheme Rules — Summary",
+    "title": "APGLI Scheme — Reference Summary",
     "type": "manual",
     "number": "APGLI Rules",
     "date": "2021-06-01",
     "department": "Finance Department",
     "category": "finance",
     "year": 2021,
-    "subject": "APGLI loan and subscription rules summary",
-    "related_articles": [
-      "apgli-loan-application"
-    ],
+    "subject": "APGLI loan and subscription reference — verify on APGLI portal",
+    "related_articles": ["apgli-loan-application"],
     "file": "/downloads/documents/go-apgli-scheme.pdf",
     "goir_url": "https://goir.ap.gov.in/"
   },
   {
     "id": "go-gpf-rules",
-    "title": "GPF Rules — Advance Provisions",
+    "title": "GPF Advance — Reference Guide",
     "type": "manual",
     "number": "GPF Rules",
     "date": "2020-08-15",
     "department": "Finance Department",
     "category": "finance",
     "year": 2020,
-    "subject": "GPF advance purposes and limits",
-    "related_articles": [
-      "gpf-advance"
-    ],
+    "subject": "GPF advance purposes and limits — verify with AG AP circulars",
+    "related_articles": ["gpf-advance"],
     "file": "/downloads/documents/go-gpf-rules.pdf",
     "goir_url": "https://goir.ap.gov.in/"
   },
   {
     "id": "circular-med-reimb-2024",
-    "title": "Medical Reimbursement Circular 2024",
+    "title": "Medical Reimbursement — Processing Guide",
     "type": "circular",
-    "number": "Circular 456/2024",
+    "number": "Reference",
     "date": "2024-08-01",
     "department": "Health Department",
     "category": "finance",
     "year": 2024,
-    "subject": "Revised medical reimbursement procedure",
-    "related_articles": [
-      "medical-reimbursement"
-    ],
+    "subject": "Medical reimbursement checklist — verify current health dept circulars",
+    "related_articles": ["medical-reimbursement"],
     "file": "/downloads/documents/circular-med-reimb-2024.pdf",
     "goir_url": "https://goir.ap.gov.in/"
   },
   {
     "id": "manual-sr-maintenance",
-    "title": "Service Register Maintenance Manual",
+    "title": "Service Register Maintenance Guide",
     "type": "manual",
     "number": "SR Manual",
     "date": "2023-01-10",
     "department": "Finance Department",
     "category": "establishment",
     "year": 2023,
-    "subject": "SR maintenance and correction guidelines",
-    "related_articles": [
-      "service-register-maintenance"
-    ],
+    "subject": "SR maintenance and correction guidelines for ministerial staff",
+    "related_articles": ["service-register-maintenance"],
     "file": "/downloads/documents/manual-sr-maintenance.pdf",
     "goir_url": "https://goir.ap.gov.in/"
   },
   {
     "id": "circular-treasury-bills",
-    "title": "Treasury Bill Submission Circular",
+    "title": "Treasury Bill Submission Guide",
     "type": "circular",
-    "number": "Circular 112/2023",
+    "number": "Reference",
     "date": "2023-04-01",
     "department": "Finance Department",
     "category": "treasury",
     "year": 2023,
-    "subject": "Bill submission through CFMS/treasury",
-    "related_articles": [
-      "bill-submission-treasury"
-    ],
+    "subject": "Bill submission through CFMS/treasury — verify current treasury circulars",
+    "related_articles": ["bill-submission-treasury"],
     "file": "/downloads/documents/circular-treasury-bills.pdf",
     "goir_url": "https://goir.ap.gov.in/"
   },
   {
     "id": "form-probation-proceedings",
-    "title": "Probation Proceedings Format",
+    "title": "Probation Proceedings — Sample Format",
     "type": "form",
     "number": "Form EST-01",
     "date": "2023-01-01",
     "department": "Health Department",
     "category": "establishment",
     "year": 2023,
-    "subject": "Standard probation declaration format",
-    "related_articles": [
-      "probation-declaration"
-    ],
+    "subject": "Sample probation declaration format for adaptation",
+    "related_articles": ["probation-declaration"],
     "file": "/downloads/documents/form-probation-proceedings.pdf",
     "goir_url": "https://goir.ap.gov.in/"
   },
   {
     "id": "form-gpf-advance",
-    "title": "GPF Advance Application Form",
+    "title": "GPF Advance Application — Sample Format",
     "type": "form",
     "number": "GPF Form-3",
     "date": "2022-01-01",
     "department": "AG AP",
     "category": "finance",
     "year": 2022,
-    "subject": "GPF advance application",
-    "related_articles": [
-      "gpf-advance"
-    ],
+    "subject": "Sample GPF advance application format",
+    "related_articles": ["gpf-advance"],
     "file": "/downloads/documents/form-gpf-advance.pdf",
     "goir_url": "https://goir.ap.gov.in/"
   },
@@ -165,13 +145,11 @@
     "type": "checklist",
     "number": "CHK-PROMO",
     "date": "2024-01-01",
-    "department": "OfficeMitra",
+    "department": "Finance Department",
     "category": "establishment",
     "year": 2024,
-    "subject": "Checklist for zone/category promotion",
-    "related_articles": [
-      "promotion-zone-category"
-    ],
+    "subject": "OfficeMitra checklist for zone/category promotion processing",
+    "related_articles": ["promotion-zone-category"],
     "file": "/downloads/documents/checklist-promotion.pdf",
     "goir_url": "https://goir.ap.gov.in/"
   },
@@ -181,102 +159,40 @@
     "type": "checklist",
     "number": "CHK-PROB",
     "date": "2024-01-01",
-    "department": "OfficeMitra",
+    "department": "Health Department",
     "category": "establishment",
     "year": 2024,
-    "subject": "Probation processing checklist",
-    "related_articles": [
-      "probation-declaration"
-    ],
+    "subject": "OfficeMitra checklist for probation processing",
+    "related_articles": ["probation-declaration"],
     "file": "/downloads/documents/checklist-probation.pdf",
     "goir_url": "https://goir.ap.gov.in/"
   },
   {
-    "id": "go-da-revision",
-    "title": "DA Revision GO — Reference",
-    "type": "go",
-    "number": "GO Ms.No.78",
-    "date": "2025-01-15",
-    "department": "Finance Department",
-    "category": "finance",
-    "year": 2025,
-    "subject": "DA rate revision effective date",
-    "related_articles": [],
-    "file": "/downloads/documents/go-da-revision.pdf",
-    "goir_url": "https://goir.ap.gov.in/"
-  },
-  {
     "id": "circular-apgli-premium",
-    "title": "APGLI Premium Deduction Circular",
+    "title": "APGLI Premium in Pay Bills — Reminder",
     "type": "circular",
-    "number": "Circular 89/2025",
+    "number": "Reference",
     "date": "2025-03-01",
     "department": "Finance Department",
     "category": "finance",
     "year": 2025,
-    "subject": "Premium deduction in pay bills",
-    "related_articles": [
-      "apgli-loan-application"
-    ],
+    "subject": "Verify APGLI premium rates in monthly pay bills",
+    "related_articles": ["apgli-loan-application"],
     "file": "/downloads/documents/circular-apgli-premium.pdf",
     "goir_url": "https://goir.ap.gov.in/"
   },
   {
-    "id": "manual-cfms-ess",
-    "title": "CFMS Employee Self Service Guide",
-    "type": "manual",
-    "number": "CFMS ESS",
-    "date": "2024-06-01",
-    "department": "APCFSS",
-    "category": "finance",
-    "year": 2024,
-    "subject": "CFMS ESS for personnel administration",
-    "related_articles": [],
-    "file": "/downloads/documents/manual-cfms-ess.pdf",
-    "goir_url": "https://goir.ap.gov.in/"
-  },
-  {
     "id": "form-el-encashment",
-    "title": "EL Encashment Application",
+    "title": "EL Encashment Application — Sample Format",
     "type": "form",
     "number": "Leave Form-E",
     "date": "2022-01-01",
     "department": "Finance Department",
     "category": "leave",
     "year": 2022,
-    "subject": "EL encashment on retirement application",
-    "related_articles": [
-      "el-encashment-retirement"
-    ],
+    "subject": "Sample EL encashment on retirement application",
+    "related_articles": ["el-encashment-retirement"],
     "file": "/downloads/documents/form-el-encashment.pdf",
-    "goir_url": "https://goir.ap.gov.in/"
-  },
-  {
-    "id": "go-conduct-rules",
-    "title": "Conduct Rules — Extract",
-    "type": "go",
-    "number": "Conduct Rules",
-    "date": "2018-01-01",
-    "department": "General Administration",
-    "category": "service-rules",
-    "year": 2018,
-    "subject": "Disciplinary procedure overview",
-    "related_articles": [],
-    "file": "/downloads/documents/go-conduct-rules.pdf",
-    "goir_url": "https://goir.ap.gov.in/"
-  },
-  {
-    "id": "circular-health-est",
-    "title": "Health Dept Establishment Circular",
-    "type": "circular",
-    "number": "HD/Est/2024/12",
-    "date": "2024-11-01",
-    "department": "Health Department",
-    "category": "establishment",
-    "year": 2024,
-    "subject": "Establishment processing in hospitals",
-    "related_articles": [],
-    "file": "/downloads/documents/circular-health-est.pdf",
     "goir_url": "https://goir.ap.gov.in/"
   },
   {
@@ -285,29 +201,25 @@
     "type": "checklist",
     "number": "CHK-MED",
     "date": "2024-01-01",
-    "department": "OfficeMitra",
+    "department": "Health Department",
     "category": "finance",
     "year": 2024,
-    "subject": "Medical claim verification checklist",
-    "related_articles": [
-      "medical-reimbursement"
-    ],
+    "subject": "OfficeMitra checklist for medical claim verification",
+    "related_articles": ["medical-reimbursement"],
     "file": "/downloads/documents/checklist-med-reimb.pdf",
     "goir_url": "https://goir.ap.gov.in/"
   },
   {
     "id": "form-bill-submission",
-    "title": "Contingent Bill Format",
+    "title": "Contingent Bill — Sample Format",
     "type": "form",
     "number": "Bill Form-T",
     "date": "2023-01-01",
     "department": "Treasury",
     "category": "treasury",
     "year": 2023,
-    "subject": "Contingent bill submission format",
-    "related_articles": [
-      "bill-submission-treasury"
-    ],
+    "subject": "Sample contingent bill submission format",
+    "related_articles": ["bill-submission-treasury"],
     "file": "/downloads/documents/form-bill-submission.pdf",
     "goir_url": "https://goir.ap.gov.in/"
   }

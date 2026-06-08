@@ -130,7 +130,7 @@ export const en = {
     title: "Built from Health Department Administrative Practice",
     description:
       "Content prepared by practitioners who process establishment and finance work daily in AP government institutions. Every article includes checklists, sample drafts, and audit guidance.",
-    point1: "12 articles with full procedure schema",
+    point1: "8 articles with full procedure schema",
     point2: "Expert Assistance for complex cases",
     point3: "Verify with GOIR before official action",
   },

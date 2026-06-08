@@ -46,20 +46,6 @@ export const articleResources: Record<string, ArticleResourceBundle> = {
     templateIds: [],
     documentIds: ["circular-treasury-bills", "form-bill-submission"],
   },
-  "transfer-inter-district": {
-    documentIds: ["circular-health-est"],
-  },
-  "relinquishment-promotion": {
-    documentIds: ["go-promotion-sr"],
-  },
-  "pay-fixation-promotion": {
-    tools: ["payEstimate", "incrementDue", "daArrears"],
-    documentIds: ["go-da-revision"],
-  },
-  "apgli-premium-pay-bill": {
-    tools: ["apgliPremium", "payBillChecklist"],
-    documentIds: ["circular-apgli-premium"],
-  },
 };
 
 export async function getArticleResources(slug: string) {

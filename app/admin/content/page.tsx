@@ -12,6 +12,7 @@ import { Container, SectionHeading } from "@/components/ui/Container";
 import { CMS_TYPE_LABELS, type CmsContentType } from "@/lib/cms/types";
 import { cmsStorageMode } from "@/lib/cms/seed";
 import { cmsList } from "@/lib/cms/store";
+import { ProductionResetButton } from "@/components/admin/ProductionResetButton";
 
 const types: { type: CmsContentType; icon: typeof BookOpen; href: string }[] = [
   { type: "article", icon: BookOpen, href: "/admin/content/article" },
@@ -39,6 +40,8 @@ export default async function AdminContentHubPage() {
         sync with git. Use <em>Sync from files</em> for an immediate update, or edit items here — changes go live when
         status is <em>published</em>.
       </div>
+
+      <ProductionResetButton />
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {types.map(({ type, icon: Icon, href }, i) => (
