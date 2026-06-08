@@ -6,13 +6,7 @@ interface ShareContent {
   type: "article" | "procedure" | "update" | "tool";
 }
 
-const teluguIntros: Record<string, string> = {
-  "probation-declaration": "Probation declare చేయడం — step-by-step guide",
-  "apgli-loan-application": "APGLI loan application — procedure & documents",
-  "gpf-advance": "GPF advance — temporary & non-temporary rules",
-  "el-encashment-retirement": "Retirement EL encashment — calculation guide",
-  "promotion-zone-category": "Zone/category promotion — processing steps",
-};
+const teluguIntros: Record<string, string> = {};
 
 export function buildWhatsAppShareText(
   content: ShareContent,

@@ -7,46 +7,7 @@ export interface ArticleResourceBundle {
   documentIds?: string[];
 }
 
-/** Links articles to tools, templates, and documents for the complete-case journey. */
-export const articleResources: Record<string, ArticleResourceBundle> = {
-  "probation-declaration": {
-    tools: ["probation"],
-    templateIds: ["probation-proceedings-template", "sr-entry-template"],
-    documentIds: ["go-probation-rules", "form-probation-proceedings", "checklist-probation"],
-  },
-  "promotion-zone-category": {
-    templateIds: ["promotion-proceedings-template"],
-    documentIds: ["go-promotion-sr", "checklist-promotion"],
-  },
-  "service-register-maintenance": {
-    templateIds: ["sr-correction-note", "sr-entry-template"],
-    documentIds: ["manual-sr-maintenance"],
-  },
-  "apgli-loan-application": {
-    tools: ["gpfRecovery"],
-    templateIds: ["apgli-loan-application-template"],
-    documentIds: ["go-apgli-scheme", "circular-apgli-premium"],
-  },
-  "gpf-advance": {
-    tools: ["gpfRecovery", "gpfSubscription"],
-    templateIds: ["gpf-advance-application-template"],
-    documentIds: ["go-gpf-rules", "form-gpf-advance"],
-  },
-  "medical-reimbursement": {
-    templateIds: ["medical-reimbursement-bill-template"],
-    documentIds: ["circular-med-reimb-2024", "checklist-med-reimb"],
-  },
-  "el-encashment-retirement": {
-    tools: ["elEncashment"],
-    templateIds: ["el-encashment-application-template"],
-    documentIds: ["go-leave-rules", "form-el-encashment"],
-  },
-  "bill-submission-treasury": {
-    tools: ["payBillChecklist"],
-    templateIds: [],
-    documentIds: ["circular-treasury-bills", "form-bill-submission"],
-  },
-};
+export const articleResources: Record<string, ArticleResourceBundle> = {};
 
 export async function getArticleResources(slug: string) {
   const bundle = articleResources[slug];

@@ -132,7 +132,7 @@ export const te: Dictionary = {
     title: "ఆరోగ్య శాఖ పరిపాలనా అనుభవంతో నిర్మించబడింది",
     description:
       "AP ప్రభుత్వ సంస్థలలో రోజువారీ establishment మరియు finance పని చేసే практitioners తయారు చేసిన కంటెంట్. ప్రతి వ్యాసంలో checklists, sample drafts మరియు audit guidance ఉంటాయి.",
-    point1: "8 launch వ్యాసాలు పూర్తి procedure schemaతో",
+    point1: "Admin panel నుండి వ్యాసాలు మరియు ప్రక్రియలు జోడించండి",
     point2: "సంక్లిష్ట కేసులకు Expert Assistance",
     point3: "అధికారిక చర్యకు ముందు GOIRతో ధృవీకరించండి",
   },
@@ -174,6 +174,7 @@ export const te: Dictionary = {
     subtitle: "ఎక్కువగా ఉపయోగించే step-by-step workflows",
     viewAll: "అన్ని ప్రక్రియలు",
     readGuide: "గైడ్ చదవండి",
+    empty: "ఇంకా ప్రక్రియలు లేవు.",
   },
   latestUpdates: {
     title: "తాజా నవీకరణలు",
@@ -186,6 +187,7 @@ export const te: Dictionary = {
     title: "Featured Documents",
     subtitle: "ఇటీవలి GOs, circulars, manuals",
     browse: "లైబ్రరీ బ్రౌజ్",
+    empty: "ఇంకా documents లేవు.",
   },
   expertBanner: {
     title: "వృత్తిపరమైన మార్గదర్శన కావాలా?",

@@ -26,6 +26,11 @@ export async function FeaturedDocuments() {
             </Link>
           }
         />
+        {documents.length === 0 ? (
+          <p className="rounded-xl border border-dashed border-navy-200 bg-white px-6 py-10 text-center text-gray-500">
+            {t.featuredDocuments.empty}
+          </p>
+        ) : (
         <div className="grid gap-5 md:grid-cols-3">
           {documents.map((doc) => (
             <article
@@ -58,6 +63,7 @@ export async function FeaturedDocuments() {
             </article>
           ))}
         </div>
+        )}
       </Container>
     </section>
   );

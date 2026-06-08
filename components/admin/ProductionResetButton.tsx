@@ -9,7 +9,7 @@ export function ProductionResetButton() {
   async function runReset() {
     if (
       !confirm(
-        "Reset production data? This removes seed community posts and re-syncs all CMS content from files."
+        "Clear all dummy data? This removes every CMS item, community post, and expert request."
       )
     ) {
       return;
@@ -30,9 +30,9 @@ export function ProductionResetButton() {
 
   return (
     <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm dark:border-amber-500/30 dark:bg-amber-600/10">
-      <strong className="text-navy-900 dark:text-white">Production reset</strong>
+      <strong className="text-navy-900 dark:text-white">Clear all content</strong>
       <p className="mt-1 text-navy-800 dark:text-navy-200">
-        Clear seed community posts and reload CMS from the latest git content files.
+        Remove all CMS content, community posts, and expert requests from the database.
       </p>
       <button
         type="button"
@@ -40,7 +40,7 @@ export function ProductionResetButton() {
         disabled={loading}
         className="mt-3 rounded-lg bg-amber-700 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
       >
-        {loading ? "Resetting…" : "Reset production data"}
+        {loading ? "Clearing…" : "Clear all dummy data"}
       </button>
       {message && <p className="mt-2 text-navy-700 dark:text-navy-200">{message}</p>}
     </div>

@@ -130,7 +130,7 @@ export const en = {
     title: "Built from Health Department Administrative Practice",
     description:
       "Content prepared by practitioners who process establishment and finance work daily in AP government institutions. Every article includes checklists, sample drafts, and audit guidance.",
-    point1: "8 articles with full procedure schema",
+    point1: "Add articles and procedures from the admin panel",
     point2: "Expert Assistance for complex cases",
     point3: "Verify with GOIR before official action",
   },
@@ -172,6 +172,7 @@ export const en = {
     subtitle: "Most used step-by-step workflows",
     viewAll: "View all procedures",
     readGuide: "Read Guide",
+    empty: "No procedures yet.",
   },
   latestUpdates: {
     title: "Latest Updates",
@@ -184,6 +185,7 @@ export const en = {
     title: "Featured Documents",
     subtitle: "Recent GOs, circulars, and manuals",
     browse: "Browse library",
+    empty: "No documents yet.",
   },
   expertBanner: {
     title: "Need Professional Guidance?",

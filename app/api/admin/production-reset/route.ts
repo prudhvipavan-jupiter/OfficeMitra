@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 import { logAdminAction } from "@/lib/admin-log";
 import { isAdminAuthenticated } from "@/lib/auth";
-import { syncCmsFromFiles } from "@/lib/cms/seed";
 import { CMS_TYPE_PATHS, type CmsContentType } from "@/lib/cms/types";
 import { getSql, isDatabaseEnabled } from "@/lib/db/client";
 
@@ -26,7 +25,7 @@ function revalidateAll() {
   revalidatePath("/sitemap.xml");
 }
 
-/** Clear seed/test data and re-sync CMS from git files for production launch. */
+/** Wipe all CMS content and user-submitted dummy data from the database. */
 export async function POST() {
   if (!(await isAdminAuthenticated())) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -36,24 +35,31 @@ export async function POST() {
 
   if (isDatabaseEnabled()) {
     const sql = getSql();
-    const seedDisc = await sql`
-      DELETE FROM discussions WHERE id LIKE 'seed-discussion-%' RETURNING id
-    `;
-    cleared.seed_discussions = seedDisc.length;
+
+    const discussions = await sql`DELETE FROM discussions RETURNING id`;
+    cleared.discussions = discussions.length;
+
+    const requests = await sql`DELETE FROM expert_requests RETURNING id`;
+    cleared.expert_requests = requests.length;
 
     await sql`DELETE FROM cms_files`;
     const cmsRows = await sql`DELETE FROM cms_content RETURNING id`;
     cleared.cms_records = cmsRows.length;
+
+    try {
+      const intel = await sql`DELETE FROM intel_detected_updates RETURNING id`;
+      cleared.intel_updates = intel.length;
+    } catch {
+      cleared.intel_updates = 0;
+    }
   }
 
-  const counts = await syncCmsFromFiles({ force: false, onlyEmpty: false });
   await logAdminAction("production_reset", { cleared: JSON.stringify(cleared) });
   revalidateAll();
 
   return NextResponse.json({
     ok: true,
     cleared,
-    cms_sync: counts,
-    message: "Production reset complete. Seed community posts removed; CMS synced from files.",
+    message: "All dummy data cleared. Add real content via Admin → Content.",
   });
 }

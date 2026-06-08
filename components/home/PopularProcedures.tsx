@@ -25,6 +25,11 @@ export async function PopularProcedures() {
             </Link>
           }
         />
+        {popularProcedures.length === 0 ? (
+          <p className="rounded-xl border border-dashed border-navy-200 bg-white px-6 py-10 text-center text-gray-500">
+            {t.popularProcedures.empty}
+          </p>
+        ) : (
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {popularProcedures.map((proc) => (
             <Link
@@ -49,6 +54,7 @@ export async function PopularProcedures() {
             </Link>
           ))}
         </div>
+        )}
       </Container>
     </section>
   );

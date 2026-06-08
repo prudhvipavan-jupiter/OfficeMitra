@@ -31,6 +31,8 @@ export function CaseWizard() {
   const t = useTranslations();
   const [selected, setSelected] = useState<string | null>(null);
 
+  if (casePaths.length === 0) return null;
+
   const path = casePaths.find((p) => p.id === selected);
 
   return (
