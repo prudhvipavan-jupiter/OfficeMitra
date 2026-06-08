@@ -1,4 +1,5 @@
 import { syncCmsFromFiles } from "./seed";
+import { isNextBuildPhase } from "@/lib/runtime";
 
 let syncStarted = false;
 
@@ -8,7 +9,7 @@ function autoSyncEnabled(): boolean {
 
 /** Sync empty CMS content types from git files (runs once per server process). */
 export async function ensureCmsAutoSync(): Promise<Record<string, number | string>> {
-  if (!autoSyncEnabled() || syncStarted) return {};
+  if (isNextBuildPhase() || !autoSyncEnabled() || syncStarted) return {};
   syncStarted = true;
 
   try {

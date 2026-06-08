@@ -12,6 +12,8 @@ build/
 .env
 .env.*
 !.env.example
+.env.production
+.env.vercel
 
 # IDE
 .idea/
@@ -41,3 +43,4 @@ __pycache__/
 
 # Temp uploads
 .tmp.driveupload/
+.vercel

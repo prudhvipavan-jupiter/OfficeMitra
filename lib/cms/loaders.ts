@@ -9,14 +9,19 @@ import { glossaryTerms as fileGlossary } from "@/lib/glossary";
 import type { TemplateRecord } from "@/lib/templates";
 import { getTemplates as fileTemplates } from "@/lib/templates";
 import { cmsFileUrl, cmsHasRecords, cmsList } from "./store";
+import { isNextBuildPhase } from "@/lib/runtime";
 
-let bootPromise = import("./auto-sync").then(({ ensureCmsAutoSync }) => ensureCmsAutoSync());
+let bootPromise = isNextBuildPhase()
+  ? Promise.resolve({})
+  : import("./auto-sync").then(({ ensureCmsAutoSync }) => ensureCmsAutoSync());
 
 async function ensureBootstrapped() {
+  if (isNextBuildPhase()) return;
   await bootPromise;
 }
 
 async function cmsActive(type: Parameters<typeof cmsHasRecords>[0]): Promise<boolean> {
+  if (isNextBuildPhase()) return false;
   return cmsHasRecords(type);
 }
 

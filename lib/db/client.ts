@@ -1,4 +1,5 @@
 import { neon, type NeonQueryFunction } from "@neondatabase/serverless";
+import { isNextBuildPhase } from "@/lib/runtime";
 
 let sql: NeonQueryFunction<false, false> | null = null;
 let schemaReady: Promise<void> | null = null;
@@ -31,7 +32,7 @@ export function getSql(): NeonQueryFunction<false, false> {
 }
 
 export async function ensureSchema(): Promise<void> {
-  if (!isDatabaseEnabled()) return;
+  if (!isDatabaseEnabled() || isNextBuildPhase()) return;
   if (!schemaReady) {
     schemaReady = runMigrations();
   }
