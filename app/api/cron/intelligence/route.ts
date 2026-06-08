@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
   } else {
     try {
       const cycle = await runIntelligenceMonitorCycle();
-      monitor = { mode: "embedded", ok: true, ...cycle };
+      monitor = { mode: "embedded", ...cycle };
     } catch (err) {
       monitor = {
         mode: "embedded",
